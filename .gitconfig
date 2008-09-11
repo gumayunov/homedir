@@ -1,0 +1,9 @@
+[user]
+    email = gumayunov@gmail.com
+[pager]
+    color = true
+[color]
+    branch = auto
+    status = auto
+[diff]
+    renamelimit = 0
