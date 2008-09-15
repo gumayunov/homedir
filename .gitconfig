@@ -1,9 +1,12 @@
+[http]
+	proxy = 192.168.18.1
 [user]
-    email = gumayunov@gmail.com
-[pager]
-    color = true
+	email = gumayunov@gmail.com
+#[pager]
+#    color = false
 [color]
-    branch = auto
-    status = auto
+	branch = auto
+	status = auto
+    diff = auto
 [diff]
-    renamelimit = 0
+	renamelimit = 0
