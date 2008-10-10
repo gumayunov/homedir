@@ -11,12 +11,13 @@ umask 2
 
 set path = (/sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin /usr/X11R6/bin $HOME/bin /adm/bin)
 
+alias   ll      ls "-Hal --color=auto"
+alias   pg      "ps aux | grep --color=auto"
+alias   rg      "~/.tools/rg"
+
 setenv LESS -MQR
 #setenv LANG ru_RU.KOI8-R
-setenv LANG ru_RU.utf8
-
-#setenv LANG en_US.UTF-8
-#alias  mani2mani "sudo /adm/bin/mani2mani.sh"
+#etenv LANG ru_RU.utf8
 
 if ($?prompt) then
   if ( $?tcsh ) then
