@@ -9,7 +9,10 @@ if path =~ /^-/
     ARGV.unshift path
     path = './'
 end
-#puts `grep -RE #{needle} #{path} | grep -vE "log|svn" | grep #{needle} --colour=always`
-puts `find #{path} -type f -regex '.*(\.php|\.pm|\.pl|\.xml|\.js|\.conf|\.rb)' -exec grep -nE '#{needle}' --color=always #{ARGV.join ' '} {} + \; | sed -e 's/:/ \+/'`
 
-#puts `find -E #{path} -type f -regex '.*(\.php|\.pm|\.pl|\.xml|\.js|\.conf)' -exec grep -nE "#{needle}" --color=always #{ARGV.join ' '} {} + | sed -e 's/:/ \+/'`
+extensions = %w(php pm pl xml js conf rb html erl)
+regex = extensions.map{|i| "\\.#{i}"}.join('|')
+regex = ".*(#{regex})"
+
+puts `find #{path} -type f -regex '#{regex}' -exec grep -nE '#{needle}' --color=always #{ARGV.join ' '} {} + \; | sed -e 's/:/ \+/'`
+
