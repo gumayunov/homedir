@@ -5,9 +5,8 @@
 # see also csh(1), environ(7).
 #
 
-
-# A righteous umask
 umask 2
+unset autologout
 
 set path = (/sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin /usr/X11R6/bin $HOME/bin /adm/bin)
 
