@@ -14,5 +14,5 @@ extensions = %w(php pm pl xml js conf rb html erl)
 regex = extensions.map{|i| "\\.#{i}"}.join('|')
 regex = ".*(#{regex})"
 
-puts `find #{path} -type f -regex '#{regex}' -exec grep -nE '#{needle}' --color=always #{ARGV.join ' '} {} + \; | sed -e 's/:/ \+/'`
+puts `find #{path} -type f -regex '#{regex}' -exec grep -nE '#{needle}' --color=always #{ARGV.join ' '} {} + \\; | sed -e 's/:/ \+/'`
 
