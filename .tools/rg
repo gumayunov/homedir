@@ -10,9 +10,11 @@ if path =~ /^-/
     path = './'
 end
 
-extensions = %w(php pm pl xml js conf rb html erl)
+extensions = %w(php pm pl xml js conf rb html erl sh)
 regex = extensions.map{|i| "\\.#{i}"}.join('|')
 regex = ".*(#{regex})"
 
-puts `find #{path} -type f -regex '#{regex}' -exec grep -nE '#{needle}' --color=always #{ARGV.join ' '} {} + \\; | sed -e 's/:/ \+/'`
+cmd = "find #{path} -type f -regex '#{regex}' -exec grep -nE '#{needle}' --color=always #{ARGV.join ' '} {} \\; | sed -e 's/:/ \+/'"
+puts cmd
+puts `#{cmd}`
 
