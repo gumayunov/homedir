@@ -11,10 +11,8 @@ if path =~ /^-/
 end
 
 extensions = %w(php pm pl xml js conf rb html erl sh)
-regex = extensions.map{|i| "\\.#{i}"}.join('|')
-regex = ".*(#{regex})"
+name_conditions = extensions.map{|ext| "-iname \*.#{ext}"}.join(' -o ')
 
-cmd = "find #{path} -type f -regex '#{regex}' -exec grep -nE '#{needle}' --color=always #{ARGV.join ' '} {} \\; | sed -e 's/:/ \+/'"
+cmd = "find #{path} -type f \\( #{name_conditions} \\) -exec grep -nE '#{needle}' --color=always #{ARGV.join ' '} {} + | sed -e 's/:/ \+/'"
 puts cmd
 puts `#{cmd}`
-

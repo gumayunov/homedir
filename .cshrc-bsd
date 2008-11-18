@@ -10,7 +10,7 @@ unset autologout
 
 set path = (/sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin /usr/X11R6/bin $HOME/bin /adm/bin)
 
-alias   ll      ls "-Hhal --color=auto"
+alias   ll      ls "-HhGal"
 alias   pg      "ps aux | grep --color=auto"
 alias   rg      "~/.tools/rg"
 
