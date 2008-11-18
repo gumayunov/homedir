@@ -1,5 +1,5 @@
 [http]
-	proxy = 192.168.18.1
+#	proxy = 192.168.18.1
 [user]
 	email = gumayunov@gmail.com
 #[pager]
