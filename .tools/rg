@@ -10,7 +10,7 @@ if path =~ /^-/
     path = './'
 end
 
-extensions = %w(php pm pl xml js conf rb html erl sh css)
+extensions = %w(php pm pl xml js conf rb html erl sh css tpl)
 name_conditions = extensions.map{|ext| "-iname '\*.#{ext}'"}.join(' -o ')
 
 cmd = "find #{path} -type f \\( #{name_conditions} \\) | xargs grep -nE '#{needle}' --color=always #{ARGV.join ' '} | sed -e 's/:/ \+/'"
