@@ -1,15 +1,19 @@
 [http]
 #	proxy = 192.168.18.1
 [user]
+    name = Victor Gumayunov
 	email = gumayunov@gmail.com
 #[pager]
 #    color = false
 [color]
-	branch = auto
-	status = auto
     diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
 [diff]
 	renamelimit = 0
+[merge]
+  summary = true
 [alias]
     st = status
     ci = commit
@@ -17,4 +21,5 @@
     co = checkout
     df = diff
     lg = log -p
-
+[core]
+  excludesfile = /home/gva/.gitignore
