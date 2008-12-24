@@ -1,0 +1,1 @@
+* rewrite .tools/rg in shell script instead of ruby
