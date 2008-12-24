@@ -13,6 +13,6 @@ end
 extensions = %w(php pm pl xml js conf rb html erl sh css)
 name_conditions = extensions.map{|ext| "-iname '\*.#{ext}'"}.join(' -o ')
 
-cmd = "find #{path} -type f \\( #{name_conditions} \\) -exec grep -nE '#{needle}' --color=always #{ARGV.join ' '} {} + | sed -e 's/:/ \+/'"
+cmd = "find #{path} -type f \\( #{name_conditions} \\) | xargs grep -nE '#{needle}' --color=always #{ARGV.join ' '} | sed -e 's/:/ \+/'"
 puts cmd
 puts `#{cmd}`
