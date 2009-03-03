@@ -17,7 +17,7 @@ alias parse_git_branch "git branch | & grep -v fatal | sed -e '/^[^*]/d' -e 's/*
 set	prompt = "%B%T%b %{[00;31m%}%n%{[01;37m%}@%{[00;32m%}%m%{[00m%}:%.02%#>"
 #set	rprompt = "%T"
 set	prompt2 = "%B%n%b>"
-set	path = (/bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin /usr/X11R6/bin /adm/bin /adm)
+set	path = (/bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin /var/lib/gems/1.8/bin)
 
 umask	22                                                                          
 
