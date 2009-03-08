@@ -8,7 +8,7 @@
 umask 2
 unset autologout
 
-set path = (/sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin $HOME/bin )
+set path = ($path $HOME/bin )
 
 alias   ll      ls "-Hhal --color=auto"
 alias   pg      "ps aux | grep --color=auto"
