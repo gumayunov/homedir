@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 cp -Rf .vim ~/
 cp -Rf .tools ~/
