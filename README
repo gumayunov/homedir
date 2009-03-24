@@ -19,4 +19,5 @@ run this to install
 *****************************
 
 ./install.sh
+source ~/.cshrc
 
