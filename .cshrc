@@ -10,9 +10,16 @@ unset autologout
 
 set path = ($path $HOME/bin )
 
-alias   ll      ls "-Hhal --color=auto"
-alias   pg      "ps aux | grep --color=auto"
-alias   rg      "~/.tools/rg"
+alias v vim
+alias gv gvim
+alias g grep
+alias l ls
+alias ll ls -FGHal --color=yes
+alias cf 'svn st | egrep "^C"'
+alias ge "grep -r --exclude '*svn*' \!* | grep -v svn"
+alias rd rm -Rf
+alias pg      "ps aux | grep --color=auto"
+alias rg      "~/.tools/rg"
 
 setenv LESS -MQR
 #setenv LANG ru_RU.KOI8-R

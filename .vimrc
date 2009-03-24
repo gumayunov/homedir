@@ -1,141 +1,338 @@
-" An example for a vimrc file.
-"
-" Maintainer: Bram Moolenaar <Bram@vim.org>
-" Last change:  2001 Jul 18
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"       for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"     for OpenVMS:  sys$login:.vimrc
+set background=dark
 
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
+" Включаем несовместимость настроек с Vi (ибо Vi нам и не понадобится).
 set nocompatible
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+" Показывать положение курсора всё время.
+set ruler
 
-set autoindent    " always set autoindenting on
-set nobackup    " do not keep a backup file, use versions instead
-set history=50    " keep 50 lines of command line history
-set ruler   " show the cursor position all the time
-set showcmd   " display incomplete commands
-set incsearch   " do incremental searching
-set st=4 sw=4 ts=4 expandtab
-set encoding=cp1251
-"set termencoding=cp1251
-set termencoding=utf8
-set fileencoding=cp1251
-set number
-set ve=all
-set updatetime=1000
-set cindent
-set timeoutlen=300
-let Tlist_Ctags_Cmd='exctags'
-let Tlist_Exit_OnlyWindow=1
-let Tlist_Auto_Highlight_Tag=1
-let g:explVertical=1
-let g:explSplitRight=1
-let g:explWinSize=20
+" Показывать незавершённые команды в статусбаре
+set showcmd
 
-"set enc=cp1251
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
+" Включаем нумерацию строк
+set nu
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
+" Фолдинг по отсупам
+"set foldmethod=indent
 
-" Make p in Visual mode replace the selected text with the "" register.
-vnoremap p <Esc>:let current_reg = @"<CR>gvs<C-R>=current_reg<CR><Esc>
+" Поиск по набору текста (очень полезная функция)
+set incsearch
 
-" This is an alternative that also works in block mode, but the deleted
-" text is lost and it only works for putting the current register.
-"vnoremap p "_dp
+" Отключаем подстветку найденных вариантов, и так всё видно.
+set nohlsearch
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
+" Теперь нет необходимости передвигать курсор к краю экрана, чтобы подняться в режиме редактирования
+set scrolljump=7
 
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
+" Теперь нет необходимости передвигать курсор к краю экрана, чтобы опуститься в режиме редактирования
+set scrolloff=7
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype on
-  filetype plugin on
-  filetype  indent on
+" Выключаем надоедливый "звонок"
+set novisualbell
+set t_vb=
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+" Поддержка мыши
+set mouse=a
+set mousemodel=popup
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+" Кодировка текста по умолчанию
+set termencoding=utf-8
 
-  autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
+" Не выгружать буфер, когда переключаемся на другой
+" Это позволяет редактировать несколько файлов в один и тот же момент без необходимости сохранения каждый раз
+" когда переключаешься между ними
+set hidden
 
-endif " has("autocmd")
+" Скрыть панель в gui версии ибо она не нужна
+set guioptions-=T
 
-runtime! macros/matchit.vim
+" Сделать строку команд высотой в одну строку
+set ch=1
 
-"--andr
-"colorscheme delek
-colorscheme textmate16
+" Скрывать указатель мыши, когда печатаем
+set mousehide
 
-" Codepage
+" Включить автоотступы
+set autoindent
+
+" Влючить подстветку синтаксиса
+syntax on
+
+" allow to use backspace instead of "x"
+set backspace=indent,eol,start whichwrap+=<,>,[,]
+
+" Преобразование Таба в пробелы
+set expandtab
+
+" Размер табулации по умолчанию
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+
+" Формат строки состояния
+set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ 0x\ \ %l,%c%V\ %P
+set laststatus=2
+
+" Включаем "умные" отспупы ( например, автоотступ после {)
+set smartindent
+
+" Fix <Enter> for comment
+set fo+=cr
+
+" Опции сесссий
+set sessionoptions=curdir,buffers,tabpages
+
+" Комманды в режиме кириллицы
+map ё `
+map й q
+map ц w
+map у e
+map к r
+map е t
+map н y
+map г u
+map ш i
+map щ o
+map з p
+map х [
+map ъ ]
+map ф a
+map ы s
+map в d
+map а f
+map п g
+map р h
+map о j
+map л k
+map д l
+map ж ;
+map э '
+map я z
+map ч x
+map с c
+map м v
+map и b
+map т n
+map ь m
+map б ,
+map ю .
+map Ё ~
+map Й Q
+map Ц W
+map У E
+map К R
+map Е T
+map Н Y
+map Г U
+map Ш I
+map Щ O
+map З P
+map Х {
+map Ъ }
+map Ф A
+map Ы S
+map В D
+map А F
+map П G
+map Р H
+map О J
+map Л K
+map Д L
+map Ж :
+map Э "
+map Я Z
+map Ч X
+map С C
+map М V
+map И B
+map Т N
+map Ь M
+map Б <
+map Ю >
+
+
+
+" CTRL-F для omni completion
+imap <C-F> <C-X><C-O>
+
+" C-c and C-v - Copy/Paste в "глобальный клипборд"
+vmap <C-C> "+y
+imap <C-V> <esc>"+gP
+vmap <C-V> "+gP
+vmap <C-X> "+x
+
+" Заставляем shift-insert работать как в Xterm
+map <S-Insert> <MiddleMouse>
+
+" C-y - удаление текущей строки
+nmap <C-y> dd
+imap <C-y> <esc>ddi
+
+" C-d - дублирование текущей строки
+imap <C-d> <esc>yypi
+
+" Поиск и замена слова под курсором
+nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
+
+" F2 - быстрое сохранение
+nmap <F2> :w<cr>
+vmap <F2> <esc>:w<cr>
+imap <F2> <esc>:w<cr>
+
+" F5 - просмотр списка буферов
+nmap <F5> <Esc>:BufExplorer<cr>
+vmap <F5> <esc>:BufExplorer<cr>
+imap <F5> <esc><esc>:BufExplorer<cr>
+
+" F6 - предыдущий буфер
+map <F6> :bp<cr>
+vmap <F6> <esc>:bp<cr>
+imap <F6> <esc>:bp<cr>
+
+" F7 - следующий буфер
+map <F7> :bn<cr>
+vmap <F7> <esc>:bn<cr>
+imap <F7> <esc>:bn<cr>
+
+
+map <F8> :TlistToggle<cr>
+vmap <F8> <esc>:TlistToggle<cr>
+imap <F8> <esc>:TlistToggle<cr>
+
+" F9 - "make" команда
+map <F9> :make<cr>
+vmap <F9> <esc>:make<cr>
+imap <F9> <esc>:make<cr>
+
+" F10 - удалить буфер
+map <F10> :bd<cr>
+vmap <F10> <esc>:bd<cr>
+imap <F10> <esc>:bd<cr>
+
+" F11 - обозреватель файлов
+map <F11> :Ex<cr>
+vmap <F11> <esc>:Ex<cr>
+imap <F11> <esc>:Ex<cr>
+
+" F12 - показать окно Taglist
+map  <F12>   <Plug>ShowFunc 
+map! <F12>   <Plug>ShowFunc
+
+" < & > - делаем отступы для блоков
+vmap < <gv
+vmap > >gv
+
+" Выключаем ненавистный режим замены
+imap <Ins> <Esc>i
+
+" Меню выбора кодировки текста (koi8-r, cp1251, cp866, utf8)
 set wildmenu
 set wcm=<Tab>
-menu Encoding.koi8-r    :e ++enc=koi8-r<CR>
-menu Encoding.windows-1251  :e ++enc=cp1251<CR>
-menu Encoding.utf8  :e ++enc=utf8<CR>
+menu Encoding.koi8-r :e ++enc=koi8-r<CR>
+menu Encoding.windows-1251 :e ++enc=cp1251<CR>
+menu Encoding.cp866 :e ++enc=cp866<CR>
+menu Encoding.utf-8 :e ++enc=utf8 <CR>
+map <F3>        :emenu Encoding.<TAB>
+map <C-e>       :emenu Encoding.<TAB>
+imap <C-e>      <Esc>:emenu Encoding.<TAB>
 
-map <F8>  :emenu Encoding.<TAB>
-nnoremap <silent> <F1> :TlistToggle<CR>
-nnoremap <silent> <F2> :Explore<CR>
-"map <F3>  :call BufferList()<CR>
-map <F3>  :help<CR>
-map <TAB> <C-w>w
+" Меню для выбора типа файла (DOS, UNIX, Mac)
+menu FileFormat.UNIX :e ++ff=unix
+menu FileFormat.DOS :e ++ff=dos
+menu FileFormat.Mac :e ++ff=mac
+map <F4>        :emenu FileFormat.<TAB>
 
-"function RubyEndToken ()
-"    let current_line = getline( '.' )
-"    let braces_at_end = '{\s*\(|\(,\|\s\|\w\)*|\s*\)\?$'
-"    let stuff_without_do = '^\s*\(class\|if\|unless\|begin\|case\|for\|module\|while\|until\|def\)'
-"    let with_do = 'do\s*\(|\(,\|\s\|\w\)*|\s*\)\?$'
-"
-"    if match(current_line, braces_at_end) >= 0
-"        return "\<CR>}\<C-O>O" 
-"    elseif match(current_line, stuff_without_do) >= 0
-"        return "\<CR>end\<C-O>O" 
-"    elseif match(current_line, with_do) >= 0
-"        return "\<CR>end\<C-O>O" 
-"    else
-"        return "\<CR>" 
-"    endif
-"endfunction
-"
-"function UseRubyIndent ()
-"    setlocal tabstop=8
-"    setlocal softtabstop=2
-"    setlocal shiftwidth=2
-"    setlocal expandtab
-"
-"    imap <buffer> <CR> <C-R>=RubyEndToken()<CR>
-"endfunction
-"
-"
-"autocmd FileType ruby,eruby call UseRubyIndent()
+
+
+" С-q - выход из Vim
+map <C-Q> <Esc>:qa<cr>
+
+
+" Автозавершение слов по tab =)
+function InsertTabWrapper()
+let col = col('.') - 1
+if !col || getline('.')[col - 1] !~ '\k'
+return "\<tab>"
+else
+return "\<c-p>"
+endif
+endfunction
+imap <tab> <space><backspace><c-r>=InsertTabWrapper()<cr>
+
+" Слова откуда будем завершать
+set complete=""
+" Из текущего буфера
+set complete+=.
+" Из словаря
+set complete+=k
+" Из других открытых буферов
+set complete+=b
+" из тегов
+set complete+=t
+
+" Включаем filetype плугин. Настройки, специфичные для определынных файлов мы разнесём по разным местам
+filetype plugin on
+au BufRead,BufNewFile *.phps set filetype=php
+au BufRead,BufNewFile *.thtml set filetype=php
+au BufRead,BufNewFile *.pl set filetype=perl
+au BufRead,BufNewFile *.pm set filetype=perl
+au BufRead,BufNewFile *.rb set filetype=ruby
+au BufRead,BufNewFile *.hrl set filetype=erlang
+
+" Настройки для SessionMgr
+let g:SessionMgr_AutoManage = 0
+let g:SessionMgr_DefaultName = "mysession"
+
+" Настройки для Tlist (показвать только текущий файл в окне навигации по коду)
+let g:Tlist_Show_One_File = 1
+
+set completeopt-=preview
+set completeopt+=longest
+set mps-=[:]
+
+
+
+hi clear
+
+if exists("syntax_on")
+syntax reset
+endif
+
+let colors_name = "wombat"
+
+
+" Vim >= 7.0 specific colors
+if version >= 700
+hi CursorLine guibg=#2d2d2d
+hi CursorColumn guibg=#2d2d2d
+hi MatchParen guifg=#f6f3e8 guibg=#857b6f gui=bold
+hi Pmenu guifg=#f6f3e8 guibg=#444444
+hi PmenuSel guifg=#000000 guibg=#cae682
+endif
+
+" General colors
+hi Cursor guifg=NONE guibg=#cccccc gui=none
+hi Normal guifg=#cccccc guibg=#303030 gui=none
+hi NonText guifg=#808080 guibg=#303030 gui=none
+hi LineNr guifg=#857b6f guibg=#000000 gui=none
+hi StatusLine guifg=#f6f3e8 guibg=#444444 gui=italic
+hi StatusLineNC guifg=#857b6f guibg=#444444 gui=none
+hi VertSplit guifg=#444444 guibg=#444444 gui=none
+hi Folded guibg=#384048 guifg=#a0a8b0 gui=none
+hi Title guifg=#f6f3e8 guibg=NONE gui=bold
+hi Visual guifg=#f6f3e8 guibg=#444444 gui=none
+hi SpecialKey guifg=#808080 guibg=#343434 gui=none
+
+" Syntax highlighting
+hi Comment guifg=#99968b gui=italic
+hi Todo guifg=#8f8f8f gui=italic
+hi Constant guifg=#e5786d gui=none
+hi String guifg=#95e454 gui=italic
+hi Identifier guifg=#cae682 gui=none
+hi Function guifg=#cae682 gui=none
+hi Type guifg=#cae682 gui=none
+hi Statement guifg=#8ac6f2 gui=none
+hi Keyword guifg=#8ac6f2 gui=none
+hi PreProc guifg=#e5786d gui=none
+hi Number guifg=#e5786d gui=none
+hi Special guifg=#e7f6da gui=none

@@ -1,3 +1,22 @@
-run this to deploy:
+*****************************
+run this to fetch
+*****************************
 
-wget http://github.com/gumayunov/homedir/tarball/master -O homedir.tar.gz && tar -xzf homedir.tar.gz && find . -name 'gumayunov-homedir*' | xargs -J % mv % homedir && cd homedir && ./install.sh
+cd
+wget http://github.com/savonarola/homedir/tarball/master -O homedir.tar.gz
+tar zxf homedir.tar.gz 
+cd `ls -d savonarola-homedir*`
+
+or
+
+cd
+git clone git://github.com/savonarola/homedir.git
+cd homedir
+
+
+*****************************
+run this to install
+*****************************
+
+./install.sh
+

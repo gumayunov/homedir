@@ -19,7 +19,7 @@ caption string "%{rk} %c %{dd} %{b}%n  %{-b dd}%-w%{+bB.}%n* %t%{-}%+w%<"
 
 defscrollback 10000
 
-vbell on
+vbell off
 vbell_msg "   Wuff  ----  Wuff!!  "
 bell_msg "   Wuff  ----  Wuff!!  "
 

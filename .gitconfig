@@ -1,8 +1,8 @@
 [http]
 #	proxy = 192.168.18.1
 [user]
-    name = Victor Gumayunov
-	email = gumayunov@gmail.com
+    name = Ilya Averyanov
+	email = ilya@averyanov.org
 #[pager]
 #    color = false
 [color]
@@ -22,4 +22,4 @@
     df = diff
     lg = log -p
 [core]
-  excludesfile = /home/gva/.gitignore
+  excludesfile = /home/savonarola/.gitignore
