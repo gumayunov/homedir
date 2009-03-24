@@ -13,7 +13,8 @@
 [diff]
     renamelimit = 0
 [merge]
-  summary = true
+    summary = true
+    tool = vimdiff
 [alias]
     st = status
     ci = commit
