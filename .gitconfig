@@ -21,6 +21,6 @@
     co = checkout
     df = diff
     lg = log -p
-    gr = log --graph --pretty=format:\"%Cred%h %Cgreen%cn%Creset %s %Cred%d\"
+    gr = log --graph --pretty=format:\"%Cred%h %Cgreen%an%Creset %s %Cred%d\"
 [core]
   excludesfile = /home/gva/.gitignore
