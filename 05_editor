@@ -1,3 +1,4 @@
 export EDITOR
 
 EDITOR=vim
+alias v="vim"
