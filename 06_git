@@ -33,7 +33,7 @@ if [[ -x `which git` ]]; then
         if [[ x$branch != x ]]; then
             color=$fg[cyan]
             push_status=""
-            if [[ x$dirty = $dirty ]]; then
+            if [[ x$dirty = x ]]; then
                 push_status=$(git-need-to-push)
             else
                 color=$fg[magenta]
