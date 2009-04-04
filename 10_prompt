@@ -1,2 +1,2 @@
 setopt prompt_subst
-PROMPT='%{$reset_color%}%B%n%b@%m %~`git-prompt`%(!.#.>) '
+PROMPT='%B%T%b %{[00;31m%}%n%{[01;37m%}@%{[00;32m%}%m%{[00m%}:%~`git-prompt`%(!.#.>)'
