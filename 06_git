@@ -9,13 +9,6 @@ if [[ -x `which git` ]]; then
             echo "1"
         fi
     }
-	function gsrb () {
-		branch=$(git-branch-name) 
-		git checkout master
-		git svn rebase
-		git checkout "${branch}"
-		git rebase master
-	}
     function git-need-to-push() {
         dirty=$(git-dirty)
         if [[ x$dirty = x ]]; then 
@@ -56,17 +49,4 @@ if [[ -x `which git` ]]; then
 		git config branch.$(git-branch-name).merge refs/heads/$(git-branch-name)
 	}
 	
-	function github-url () {
-		git config remote.origin.url | sed -En 's/git(@|:\/\/)github.com(:|\/)(.+)\/(.+).git/https:\/\/github.com\/\3\/\4/p'
-	}
-	
-	# Seems to be the best OS X jump-to-github alias from http://tinyurl.com/2mtncf
-	function github-go () {
-		open $(github-url)
-	}
-
-
-	function nhgk () {
-		nohup gitk --all &
-	}
 fi
