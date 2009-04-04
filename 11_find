@@ -1,0 +1,2 @@
+f () { find ./ -path "*$1*" -print0 | xargs -0 egrep --with-filename --color $2 }
+fr () { find ./ -regextype posix-egrep -regex ".*$1" -print0 | xargs -0 egrep --with-filename --color $2 }
