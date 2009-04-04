@@ -64,7 +64,8 @@ if [[ -x `which git` ]]; then
 	function github-go () {
 		open $(github-url)
 	}
-	
+
+
 	function nhgk () {
 		nohup gitk --all &
 	}
