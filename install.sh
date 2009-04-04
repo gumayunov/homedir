@@ -8,5 +8,5 @@ cp -f .screenrc ~/
 cp -f .gitignore ~/
 cp -f .cshrc ~/
 rm -Rf ~/.zsh_script
-cp -Rf zsh ~/.zsh_script
+cp -Rf zshkit ~/.zsh_script
 ~/.zsh_script/install
