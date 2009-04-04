@@ -17,11 +17,17 @@ if [[ -x `which git` ]]; then
 		git rebase master
 	}
     function git-need-to-push() {
-        if pushtime=$(git status | grep 'Your branch is ahead' 2> /dev/null); then
-            echo "↑ "
+        dirty=$(git-dirty)
+        if [[ x$dirty = x ]]; then 
+            branch=$(git-branch-name)
+            if [[ x$branch != x ]]; then
+                need_push=$(git checkout $branch | grep 'Your branch is ahead' 2> /dev/null; echo $?)
+                if [[ $need_push = 1 ]]; then
+                    echo "↑ "
+                fi
+            fi
         fi
     }
-
 	function git-prompt() {
 		gstatus=$(git status 2> /dev/null)
 		branch=$(echo $gstatus | head -1 | sed 's/^# On branch //')
