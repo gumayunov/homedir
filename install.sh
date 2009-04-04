@@ -7,5 +7,6 @@ cp -f .vimrc ~/
 cp -f .screenrc ~/
 cp -f .gitignore ~/
 cp -f .cshrc ~/
+rm -Rf ~/.zsh_script
 cp -Rf zsh ~/.zsh_script
 ~/.zsh_script/install
