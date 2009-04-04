@@ -1,0 +1,6 @@
+alias g=`which grep`
+if [[ $uname = "Linux" ]]; then
+    alias eg='egrep --color'
+else
+    alias eg='egrep'
+fi

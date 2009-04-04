@@ -1,3 +1,0 @@
-[submodule "zsh"]
-	path = zsh
-	url = git@github.com:savonarola/zshkit.git
