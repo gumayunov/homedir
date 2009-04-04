@@ -21,8 +21,8 @@ if [[ -x `which git` ]]; then
         if [[ x$dirty = x ]]; then 
             branch=$(git-branch-name)
             if [[ x$branch != x ]]; then
-                need_push=$(git checkout $branch | grep 'Your branch is ahead' 2> /dev/null; echo $?)
-                if [[ $need_push = 1 ]]; then
+                need_push=$(git checkout $branch 2>/dev/null | grep 'Your branch is ahead' 2> /dev/null)
+                if [[ x$need_push != x ]]; then
                     echo "↑ "
                 fi
             fi
