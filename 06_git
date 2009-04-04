@@ -23,22 +23,23 @@ if [[ -x `which git` ]]; then
             if [[ x$branch != x ]]; then
                 need_push=$(git checkout $branch 2>/dev/null | grep 'Your branch is ahead' 2> /dev/null)
                 if [[ x$need_push != x ]]; then
-                    echo "↑ "
+                    echo "↑"
                 fi
             fi
         fi
     }
 	function git-prompt() {
-		gstatus=$(git status 2> /dev/null)
-		branch=$(echo $gstatus | head -1 | sed 's/^# On branch //')
-		dirty=$(echo $gstatus | sed 's/^#.*$//' | tail -2 | grep 'nothing to commit (working directory clean)'; echo $?)
-		if [[ x$branch != x ]]; then
-			dirty_color=$fg[cyan]
+		branch=$(git-branch-name)
+        if [[ x$branch != x ]]; then
+            color=$fg[cyan]
             push_status=""
-#			if [[ $dirty != 1 ]] { push_status=$(git-need-to-push) }
-			if [[ $dirty = 1 ]] { dirty_color=$fg[magenta] }
-			[ x$branch != x ] && echo " %{$dirty_color%}$branch$push_status%{$reset_color%} "
-		fi
+            if [[ x$dirty = $dirty ]]; then
+                push_status=$(git-need-to-push)
+            else
+                color=$fg[magenta]
+            fi
+            echo " %{$color%}$branch$push_status%{$reset_color%} "
+        fi
 	}
 	function git-scoreboard () {
 		git log | grep Author | sort | uniq -ci | sort -r
