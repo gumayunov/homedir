@@ -3,9 +3,12 @@ if [[ -x `which git` ]]; then
 		git branch 2> /dev/null | grep '^\*' | sed 's/^\*\ //'
 	}
 	function git-dirty () {
-        echo $gstatus | sed 's/^#.*$//' | tail -2 | grep 'nothing to commit (working directory clean)' 
-		echo $?
-	}
+		gstatus=$(git status 2> /dev/null)
+		dirty=$(echo $gstatus | sed 's/^#.*$//' | tail -2 | grep 'nothing to commit (working directory clean)'; echo $?)
+        if [[ $dirty = 1 ]]; then
+            echo "1"
+        fi
+    }
 	function gsrb () {
 		branch=$(git-branch-name) 
 		git checkout master
