@@ -1,2 +1,2 @@
-alias rgrep=`which grep`
-alias grep='egrep --color'
+alias g=`which grep`
+alias eg='egrep --color'
