@@ -1,8 +1,7 @@
 [http]
 #	proxy = 192.168.18.1
 [user]
-    name = Ilya Averyanov
-	email = ilya@averyanov.org
+	email = ilya.averyanov@gmail.com
 #[pager]
 #    color = false
 [color]
