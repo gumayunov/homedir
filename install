@@ -7,8 +7,14 @@
 
 cp -Rf .vim ~/
 cp -Rf .tools ~/
+
+rm -Rf ~/.zshkit
+cp -Rf zshkit ~/.zshkit
+~/.zshkit/install
+
 cp -f .gitconfig ~/
 cp -f .vimrc ~/
 cp -f .screenrc ~/
 cp -f .gitignore ~/
 cp -f .cshrc ~/
+

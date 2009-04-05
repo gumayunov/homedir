@@ -1,0 +1,1 @@
+alias pg='ps aux | g'
