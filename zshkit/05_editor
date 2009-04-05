@@ -1,0 +1,6 @@
+export EDITOR=vim
+alias v="vim"
+
+if [[ -x `which gvim` ]]; then
+    alias gv="gvim"
+fi

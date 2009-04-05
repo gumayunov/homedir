@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+mydir=`dirname $0`
+if [[ $mydir = . ]]; then
+	mydir=`pwd`
+fi
+dest=$HOME
+echo My Directory: $mydir
+cp $HOME/.zshenv $HOME/.zshenv.pre_zshkit
+cp $HOME/.zshrc $HOME/.zshrc.pre_zshkit
+echo "source $mydir/env" > $HOME/.zshenv
+echo "source $mydir/rc" > $HOME/.zshrc
