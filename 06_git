@@ -16,7 +16,7 @@ if [[ -x `which git` ]]; then
             if [[ x$branch != x ]]; then
                 need_push=$(git checkout $branch 2>/dev/null | grep 'Your branch is ahead' 2> /dev/null)
                 if [[ x$need_push != x ]]; then
-                    echo "↑"
+                    echo " ^"
                 fi
             fi
         fi
