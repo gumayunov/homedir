@@ -7,8 +7,7 @@ if [[ -x `which git` ]]; then
         branch=$(git-branch-name)
         if [[ x$branch != x ]]; then
             color=$fg[cyan]
-            push_status=""
-            pull_status=""
+            wc_status=""
             
             gstatus=$(git status 2> /dev/null)
             
@@ -19,22 +18,21 @@ if [[ -x `which git` ]]; then
 
             need_push=$(echo $gstatus | grep 'Your branch is ahead' 2> /dev/null)
             if [[ x$need_push != x ]]; then
-                push_status="^"
+                wc_status="↑"
             fi
 
             need_pull=$(echo $gstatus | grep 'Your branch is behind' 2> /dev/null) 
             if [[ x$need_pull != x ]]; then
-                pull_status="!"
+                wc_status="↓"
             fi
             
             diverged=$(echo $gstatus | grep 'have diverged,' 2> /dev/null) 
             if [[ x$diverged != x ]]; then
-                pull_status="!"
-                push_status="^"
+                wc_status="↕"
                 color=$fg[red]
             fi
 
-            echo " %{$color%}$branch$push_status$pull_status%{$reset_color%} "
+            echo " %{$color%}$branch$wc_status%{$reset_color%} "
         fi
     }
     function git-scoreboard () {
