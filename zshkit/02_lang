@@ -1,0 +1,9 @@
+if [[ $uname = "Linux" ]]; then
+    my_lang="ru_RU.UTF8"
+else
+    my_lang="ru_RU.CP1251"
+fi
+
+export LANG="$my_lang"
+export LC_ALL="$my_lang"
+
