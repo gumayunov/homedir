@@ -1,2 +1,0 @@
-alias rless=`which less`
-alias less="rless -MQR"
