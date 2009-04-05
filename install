@@ -7,5 +7,6 @@ dest=$HOME
 echo My Directory: $mydir
 cp $HOME/.zshenv $HOME/.zshenv.pre_zshkit
 cp $HOME/.zshrc $HOME/.zshrc.pre_zshkit
-echo "source $mydir/env" > $HOME/.zshenv
+cat "$mydir/lang" > $HOME/.zshenv
+echo "source $mydir/env" >> $HOME/.zshenv
 echo "source $mydir/rc" > $HOME/.zshrc
