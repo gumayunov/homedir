@@ -1,7 +1,7 @@
 if [[ $uname = "Linux" ]]; then
-    color_ls_param = ' --color=yes '
+    color_ls_param=' --color=yes '
 else
-    color_ls_param = ' '
+    color_ls_param=' '
 fi
 
 alias l="ls $color_ls_param"
