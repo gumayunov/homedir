@@ -1,16 +1,15 @@
-# $FreeBSD: src/share/skel/dot.cshrc,v 1.13 2001/01/10 17:35:28 archie Exp $
-#
-# .cshrc - csh resource script, read at beginning of execution by each shell
-#
-# see also csh(1), environ(7).
-#
 
 umask 2
 unset autologout
 
 set path = ($path $HOME/bin )
 
-alias   ll      ls "-Hhal --color=auto"
+if [ `uname` == 'Linux' ]; then
+  alias   ll    ls "-Hhal --color=auto"
+else
+  alias   ll    ls "-HhGal"
+fi
+
 alias   pg      "ps aux | grep --color=auto"
 alias   rg      "~/.tools/rg"
 
