@@ -1,38 +1,46 @@
 if [[ -x `which git` ]]; then
+    
+    function in_mnt_dir() {
+        pwd | grep '/home/savonarola/mnt'
+    }
+
     function git-branch-name () {
         git branch 2> /dev/null | grep '^\*' | sed 's/^\*\ //'
     }
 
     function git-prompt() {
-        branch=$(git-branch-name)
-        if [[ x$branch != x ]]; then
-            color=$fg[cyan]
-            wc_status=""
-            
-            gstatus=$(git status 2> /dev/null)
-            
-            dirty=$(echo $gstatus | sed 's/^#.*$//' | tail -2 | grep 'nothing to commit (working directory clean)';)
-            if [[ x$dirty = x ]]; then
-                color=$fg[magenta]
-            fi
+        in_mnt_dir=$(in_mnt_dir)
+        if [[ x$in_mnt_dir = x ]]; then
+            branch=$(git-branch-name)
+            if [[ x$branch != x ]]; then
+                color=$fg[cyan]
+                wc_status=""
+                
+                gstatus=$(git status 2> /dev/null)
+                
+                dirty=$(echo $gstatus | sed 's/^#.*$//' | tail -2 | grep 'nothing to commit (working directory clean)';)
+                if [[ x$dirty = x ]]; then
+                    color=$fg[magenta]
+                fi
 
-            need_push=$(echo $gstatus | grep 'Your branch is ahead' 2> /dev/null)
-            if [[ x$need_push != x ]]; then
-                wc_status=" F"
-            fi
+                need_push=$(echo $gstatus | grep 'Your branch is ahead' 2> /dev/null)
+                if [[ x$need_push != x ]]; then
+                    wc_status=" F"
+                fi
 
-            need_pull=$(echo $gstatus | grep 'Your branch is behind' 2> /dev/null) 
-            if [[ x$need_pull != x ]]; then
-                wc_status=" B"
-            fi
-            
-            diverged=$(echo $gstatus | grep 'have diverged,' 2> /dev/null) 
-            if [[ x$diverged != x ]]; then
-                wc_status=" D"
-                color=$fg[red]
-            fi
+                need_pull=$(echo $gstatus | grep 'Your branch is behind' 2> /dev/null) 
+                if [[ x$need_pull != x ]]; then
+                    wc_status=" B"
+                fi
+                
+                diverged=$(echo $gstatus | grep 'have diverged,' 2> /dev/null) 
+                if [[ x$diverged != x ]]; then
+                    wc_status=" D"
+                    color=$fg[red]
+                fi
 
-            echo " %{$color%}$branch$wc_status%{$reset_color%} "
+                echo " %{$color%}$branch$wc_status%{$reset_color%} "
+            fi
         fi
     }
     function git-scoreboard () {
