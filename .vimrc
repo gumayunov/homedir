@@ -161,14 +161,8 @@ map <S-Insert> <MiddleMouse>
 nmap <C-y> dd
 imap <C-y> <esc>ddi
 
-
-let g:snippetsEmu_key = "<C-d>"
-
-" C-d - дублирование текущей строки
-" imap <C-d> <esc>yypi
-
 " Поиск и замена слова под курсором
-nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
+"nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
 
 " F2 - быстрое сохранение
 nmap <F2> :w<cr>
@@ -251,6 +245,8 @@ return "\<c-p>"
 endif
 endfunction
 imap <tab> <space><backspace><c-r>=InsertTabWrapper()<cr>
+
+map <C-H> :Moccur<cr>
 
 " Слова откуда будем завершать
 set complete=""

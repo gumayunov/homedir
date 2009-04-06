@@ -6,5 +6,5 @@ set nu
 set mouse=a
 set mousemodel=popup
 
-
+let g:snippetsEmu_key = "<C-@>"
 

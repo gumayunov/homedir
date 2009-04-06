@@ -70,6 +70,7 @@ function! s:SetupAndGo(func)
     keepjumps cfirst 1
     exec "normal! \<C-o>"
     copen
+    wincmd L
 
     " Map the key sequence on the QuickFix
     if !g:occur_no_quickfix_map
