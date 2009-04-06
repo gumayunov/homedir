@@ -1,7 +1,5 @@
-my_lang="ru_RU.KOI8-R"
+#my_lang="ru_RU.KOI8-R"
 #my_lang="ru_RU.UTF8"
 #my_lang="ru_RU.CP1251"
 
-export LANG="$my_lang"
-export LC_ALL="$my_lang"
 
