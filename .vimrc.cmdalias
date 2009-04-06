@@ -34,3 +34,5 @@ unlet s:save_cpo
 
 
 call CmdAlias('hs', 'Moccur')
+call CmdAlias('pst', 'set paste')
+call CmdAlias('npst', 'set nopaste')
