@@ -18,17 +18,17 @@ if [[ -x `which git` ]]; then
 
             need_push=$(echo $gstatus | grep 'Your branch is ahead' 2> /dev/null)
             if [[ x$need_push != x ]]; then
-                wc_status="↑"
+                wc_status=" A"
             fi
 
             need_pull=$(echo $gstatus | grep 'Your branch is behind' 2> /dev/null) 
             if [[ x$need_pull != x ]]; then
-                wc_status="↓"
+                wc_status=" B"
             fi
             
             diverged=$(echo $gstatus | grep 'have diverged,' 2> /dev/null) 
             if [[ x$diverged != x ]]; then
-                wc_status="↕"
+                wc_status=" D"
                 color=$fg[red]
             fi
 
