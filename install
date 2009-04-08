@@ -1,16 +1,23 @@
 #!/usr/bin/env zsh
 mydir=`dirname $0`
 if [[ $mydir = . ]]; then
-	mydir=`pwd`
+    mydir=`pwd`
 fi
+
 dest=$HOME
 echo My Directory: $mydir
-cp $HOME/.zshenv $HOME/.zshenv.pre_zshkit
-cp $HOME/.zshrc $HOME/.zshrc.pre_zshkit
 
-if [[ -f "$mydir/lang" ]]; then
-    cat "$mydir/lang" > $HOME/.zshenv
+if [[ -f $HOME/.zshenv ]]; then
+ cp $HOME/.zshenv $HOME/.zshenv.pre_zshkit
 fi
 
-echo "source $mydir/env" >> $HOME/.zshenv
+if [[ -f $HOME/.zshrc ]]; then
+    cp $HOME/.zshrc $HOME/.zshrc.pre_zshkit
+fi
+
+if [[ -f $mydir/lang ]]; then
+    cat $mydir/lang > $HOME/.zshenv
+fi
+
+echo "source $mydir/env" > $HOME/.zshenv
 echo "source $mydir/rc" > $HOME/.zshrc
