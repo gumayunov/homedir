@@ -1,2 +1,2 @@
-alias rless=`which less`
+alias rless=/usr/bin/less
 alias less="rless -MQR"
