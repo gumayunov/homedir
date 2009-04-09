@@ -1,4 +1,0 @@
-#!/bin/sh
-
-#git remote add -f savonarola-zshkit git@github.com:savonarola/zshkit.git
-git pull -s subtree savonarola-zshkit master

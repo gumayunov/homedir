@@ -3,9 +3,7 @@ use Data::Dumper;
 no strict;
 no warnings "all";
 $cmd = shift @ARGV;
-while(<STDIN>) {
+while(<>) {
     chomp;
-    eval $cmd;
-    chomp;
-    print( $_, "\n" ) if defined;
+    print( $_, "\n" ) if eval $cmd;
 }

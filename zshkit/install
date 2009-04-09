@@ -4,10 +4,16 @@ if [[ $mydir = . ]]; then
 	mydir=`pwd`
 fi
 dest=$HOME
-echo My Directory: $mydir
 cp $HOME/.zshenv $HOME/.zshenv.pre_zshkit
 cp $HOME/.zshrc $HOME/.zshrc.pre_zshkit
+rm $HOME/.default_zkbd.pre_zshkit
+mv $HOME/.default_zkbd $HOME/.default_zkbd.pre_zshkit
+cp $mydir/default_zkbd  $HOME/.default_zkbd
 cat "$mydir/lang" > $HOME/.zshenv
 cat "$mydir/umask" >> $HOME/.zshenv
-echo "source $mydir/env" >> $HOME/.zshenv
-echo "source $mydir/rc" > $HOME/.zshrc
+for f in $mydir/??_*; do
+    echo "# $f" >>  $HOME/.zshenv
+    cat $f >> $HOME/.zshenv
+    echo " " >>  $HOME/.zshenv
+done
+cat $mydir/rc > $HOME/.zshrc
