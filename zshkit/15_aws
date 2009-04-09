@@ -1,0 +1,5 @@
+if [[ -f "$HOME/.aws" ]]; then
+    source "$HOME/.aws";
+fi
+
+
