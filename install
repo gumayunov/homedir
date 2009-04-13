@@ -11,10 +11,11 @@ cp -Rf .tools ~/
 rm -Rf ~/.zshkit
 cp -Rf zshkit ~/.zshkit
 ~/.zshkit/install
+cat zshrc_addons >> ~/.zshrc
+
 
 cp -f .gitconfig ~/
 cp -f .vimrc ~/
 cp -f .screenrc ~/
 cp -f .gitignore ~/
 cp -f .cshrc ~/
-
