@@ -214,10 +214,6 @@ map <F11> :Ex<cr>
 vmap <F11> <esc>:Ex<cr>
 imap <F11> <esc>:Ex<cr>
 
-" F12 - показать окно Taglist
-map  <F12>   <Plug>ShowFunc 
-map! <F12>   <Plug>ShowFunc
-
 " < & > - делаем отступы для блоков
 vmap < <gv
 vmap > >gv
@@ -242,7 +238,8 @@ menu FileFormat.DOS :e ++ff=dos
 menu FileFormat.Mac :e ++ff=mac
 map <F4>        :emenu FileFormat.<TAB>
 
-
+map <F12> :emenu Perl.Idioms.
+imap <F12> <ESC>:emenu Perl.Idioms.
 
 " С-q - выход из Vim
 map <C-Q> <Esc>:qa<cr>

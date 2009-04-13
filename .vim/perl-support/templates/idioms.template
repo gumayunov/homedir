@@ -40,10 +40,13 @@ $<CURSOR> =~ s/<+pattern+>/<+replacement+>/xm
 $<CURSOR> =~ tr/<+searchlist+>/<+replacementlist+>/
 §%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 == idioms.subroutine ==
-sub |?FUNCTION_NAME| {
-	my	( $par1<CURSOR> )	= @_;
+# -------------------------------------------------------------------------------
+
+sub |?FUNCTION_NAME| 
+{
+	my	( $self<CURSOR> )	= @_;
 <SPLIT>	return ;
-}	# ----------  end of subroutine |FUNCTION_NAME|  ----------
+}
 §%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 == idioms.print ==
 print "<CURSOR>\n";
