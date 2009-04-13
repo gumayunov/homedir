@@ -8,6 +8,6 @@ cd homedir
 
 or
 
-git clone git://github.com/savonarola/homedir.git
+git clone git://github.com/gumayunov/homedir.git
 cd homedir
 ./install.sh
