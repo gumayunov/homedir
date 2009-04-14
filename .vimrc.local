@@ -1,0 +1,10 @@
+
+" Включаем нумерацию строк
+set nu
+
+" Поддержка мыши
+set mouse=a
+set mousemodel=popup
+
+
+

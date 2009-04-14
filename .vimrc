@@ -9,9 +9,6 @@ set ruler
 " Показывать незавершённые команды в статусбаре
 set showcmd
 
-" Включаем нумерацию строк
-set nu
-
 " Фолдинг по отсупам
 "set foldmethod=indent
 
@@ -30,10 +27,6 @@ set scrolloff=7
 " Выключаем надоедливый "звонок"
 set novisualbell
 set t_vb=
-
-" Поддержка мыши
-set mouse=a
-set mousemodel=popup
 
 " Кодировка текста по умолчанию
 set termencoding=utf-8
@@ -333,3 +326,4 @@ hi Keyword guifg=#8ac6f2 gui=none
 hi PreProc guifg=#e5786d gui=none
 hi Number guifg=#e5786d gui=none
 hi Special guifg=#e7f6da gui=none
+
