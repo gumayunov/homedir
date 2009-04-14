@@ -1,7 +1,7 @@
 #!/bin/sh
 
-rm -Rf ~/.vim.prev
-mv ~/.vim ~/.vim.prev
+#rm -Rf ~/.vim.prev
+#mv ~/.vim ~/.vim.prev
 cp -Rf .vim ~/
 cp -f .vimrc ~/
 is_remote="$1"
