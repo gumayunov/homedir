@@ -247,7 +247,7 @@ else
 return "\<c-p>"
 endif
 endfunction
-imap <tab> <space><backspace><c-r>=InsertTabWrapper()<cr>
+imap <C-@> <space><backspace><c-r>=InsertTabWrapper()<cr>
 
 " Слова откуда будем завершать
 set complete=""
