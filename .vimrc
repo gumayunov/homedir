@@ -1,9 +1,3 @@
-"Установка доп раскладки 
-set keymap=russian-jcukenwin 
-
-"Раскладка по умолчанию основная (eng) 
-set iminsert=0
-
 set background=dark
 
 " Включаем несовместимость настроек с Vi (ибо Vi нам и не понадобится).
@@ -167,8 +161,11 @@ map <S-Insert> <MiddleMouse>
 nmap <C-y> dd
 imap <C-y> <esc>ddi
 
+
+let g:snippetsEmu_key = "<C-d>"
+
 " C-d - дублирование текущей строки
-imap <C-d> <esc>yypi
+" imap <C-d> <esc>yypi
 
 " Поиск и замена слова под курсором
 nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
@@ -253,7 +250,7 @@ else
 return "\<c-p>"
 endif
 endfunction
-imap <C-@> <space><backspace><c-r>=InsertTabWrapper()<cr>
+imap <tab> <space><backspace><c-r>=InsertTabWrapper()<cr>
 
 " Слова откуда будем завершать
 set complete=""
