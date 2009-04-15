@@ -1,3 +1,9 @@
+"Установка доп раскладки 
+set keymap=russian-jcukenwin 
+
+"Раскладка по умолчанию основная (eng) 
+set iminsert=0
+
 set background=dark
 
 " Включаем несовместимость настроек с Vi (ибо Vi нам и не понадобится).
