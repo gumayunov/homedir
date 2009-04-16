@@ -6,7 +6,7 @@ if [ "${remote_param}x" = "x" ] || [  "${remote_param}x" = "remotex" ]; then
     is_remote="yes"
 elif [ "${remote_param}x" = "localx" ]; then
     echo "Local install"
-    is_remote = ""
+    is_remote=""
 else
     echo "Usage $0 local|remote"
     exit 255
