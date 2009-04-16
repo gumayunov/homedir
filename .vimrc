@@ -35,10 +35,6 @@ set scrolloff=1
 set novisualbell
 set t_vb=
 
-" Поддержка мыши
-set mouse=a
-set mousemodel=popup
-
 " Кодировка текста по умолчанию
 set encoding=utf8
 set fileencoding=utf8
@@ -175,11 +171,8 @@ map <S-Insert> <MiddleMouse>
 nmap <C-y> dd
 imap <C-y> <esc>ddi
 
-" C-d - дублирование текущей строки
-imap <C-d> <esc>yypi
-
 " Поиск и замена слова под курсором
-nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
+"nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
 
 " F2 - быстрое сохранение
 nmap <F2> :w<cr>
@@ -221,10 +214,6 @@ map <F11> :Ex<cr>
 vmap <F11> <esc>:Ex<cr>
 imap <F11> <esc>:Ex<cr>
 
-" F12 - показать окно Taglist
-map  <F12>   <Plug>ShowFunc 
-map! <F12>   <Plug>ShowFunc
-
 " < & > - делаем отступы для блоков
 vmap < <gv
 vmap > >gv
@@ -250,7 +239,8 @@ menu FileFormat.DOS :e ++ff=dos
 menu FileFormat.Mac :e ++ff=mac
 map <F4>        :emenu FileFormat.<TAB>
 
-
+map <F12> :emenu Perl.Idioms.
+imap <F12> <ESC>:emenu Perl.Idioms.
 
 " С-q - выход из Vim
 map <C-Q> <Esc>:qa<cr>
@@ -267,6 +257,8 @@ function InsertTabWrapper()
 endfunction
 
 imap <tab> <space><backspace><c-r>=InsertTabWrapper()<cr>
+
+map <C-H> :Moccur<cr>
 
 " Слова откуда будем завершать
 set complete=""
@@ -295,9 +287,13 @@ let g:SessionMgr_DefaultName = "mysession"
 " Настройки для Tlist (показвать только текущий файл в окне навигации по коду)
 let g:Tlist_Show_One_File = 1
 
+let g:snippetsEmu_key = "<C-d>"
+
 set completeopt-=preview
 set completeopt+=longest
 set mps-=[:]
+
+
 
 hi clear
 
@@ -329,4 +325,3 @@ hi rubyPseudoVariable ctermfg=White
 hi RubyInteger ctermfg=Darkred
 hi RubyFloat ctermfg=Darkred
 hi RubyDocumentation ctermfg=White ctermbg=Darkgrey
-
