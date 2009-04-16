@@ -22,6 +22,7 @@ echo ' ' >> ~/.vimrc
 echo '" Command aliases: ' >> ~/.vimrc 
 cat ./.vimrc.cmdalias >> ~/.vimrc
 
+cp -f .gvimrc ~/
 cp -Rf .tools ~/
 cp -f .gitconfig ~/
 
