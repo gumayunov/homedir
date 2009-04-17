@@ -268,9 +268,7 @@ au BufRead,BufNewFile *.pm set filetype=perl
 au BufRead,BufNewFile *.rb set filetype=ruby
 au BufRead,BufNewFile *.hrl set filetype=erlang
 
-" Настройки для SessionMgr
-let g:SessionMgr_AutoManage = 0
-let g:SessionMgr_DefaultName = "mysession"
+let g:snippetsEmu_key = "<C-d>"
 
 " Настройки для Tlist (показвать только текущий файл в окне навигации по коду)
 let g:Tlist_Show_One_File = 1

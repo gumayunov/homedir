@@ -6,7 +6,8 @@ let st = g:snip_start_tag
 let et = g:snip_end_tag
 let cd = g:snip_elem_delim
 
-exec "Snippet sub sub ".st."FunctionName".et." {<CR>".st.et."<CR>}<CR>".st.et
+" exec "Snippet sub sub ".st."FunctionName".et." {<CR>".st.et."<CR>}<CR>".st.et
+exec "Snippet sub sub ".st."MethodName".et."<CE>{<CR>    my ( $self".st.et." ) = @_<CR>    ".st.et."<CR>}<CR>".st.et
 exec "Snippet class package ".st."ClassName".et.";<CR><CR>".st.et.st."ParentClass".et.st.et.";<CR><CR>sub new {<CR>my \$class = shift;<CR>\$class = ref \$class if ref \$class;<CR>my $self = bless {}, \$class;<CR>\$self;<CR>}<CR><CR>1;<CR>".st.et
 exec "Snippet xfore ".st."expression".et." foreach @".st."array".et.";".st.et
 exec "Snippet xwhile ".st."expression".et." while ".st."condition".et.";".st.et
