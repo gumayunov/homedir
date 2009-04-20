@@ -234,6 +234,7 @@ imap <F12> <ESC>:emenu Perl.Idioms.
 " С-q - выход из Vim
 map <C-Q> <Esc>:qa<cr>
 
+imap <C-S> <Esc>:w<CR>
 
 " Автозавершение слов по tab =)
 function InsertTabWrapper()

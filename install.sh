@@ -29,4 +29,5 @@ cp -f .gitconfig ~/
 cp -f .screenrc ~/
 cp -f .gitignore ~/
 cp -f .cshrc ~/
+cp -f .setxkbmap.sh ~/
 ./zshkit/install
