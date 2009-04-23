@@ -250,7 +250,7 @@ map <C-Q> <Esc>:qa<cr>
 function InsertTabWrapper()
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
+        return "    "
     else
         return "\<c-p>"
     endif
