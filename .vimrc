@@ -1,5 +1,6 @@
 set background=dark
 
+
 " Включаем несовместимость настроек с Vi (ибо Vi нам и не понадобится).
 set nocompatible
 
@@ -247,6 +248,8 @@ endif
 endfunction
 "imap <tab> <space><backspace><c-r>=g:InsertTabWrapper()<cr>
 
+:au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
 map <C-H> :Moccur<cr>
 
 " Слова откуда будем завершать
@@ -278,6 +281,8 @@ set completeopt-=preview
 set completeopt+=longest
 set mps-=[:]
 
+
+set viminfo='10,\"100,:20,%,n~/.viminfo
 
 
 hi clear
