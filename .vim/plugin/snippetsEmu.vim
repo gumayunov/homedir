@@ -623,7 +623,8 @@ function! s:ReturnKey()
   else
     " We need this hacky line as the one below doesn't seem to work.
     " Patches welcome
-    exe "return \"".substitute(g:snippetsEmu_key, '^<', "\\\\<","")."\""
+    "exe "return \"".substitute(g:snippetsEmu_key, '^<', "\\\\<","")."\""
+    return g:InsertTabWrapper()
     "return substitute(g:snippetsEmu_key, '^<', "\\<","")
   endif
 endfunction
