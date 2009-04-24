@@ -4,6 +4,7 @@ set ve=all
 
 set background=dark
 
+
 " Включаем несовместимость настроек с Vi (ибо Vi нам и не понадобится).
 set nocompatible
 
@@ -251,12 +252,14 @@ imap <C-S> <Esc>:w<CR>
 function g:InsertTabWrapper()
 let col = col('.') - 1
 if !col || getline('.')[col - 1] !~ '\k'
-return "\<space>\<backspace>\<tab>"
+return "\<tab>"
 else
-return "\<c-p>"
+return "\<space>\<backspace>\<c-p>"
 endif
 endfunction
 "imap <tab> <space><backspace><c-r>=g:InsertTabWrapper()<cr>
+
+:au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 map <C-H> :Moccur<cr>
 
@@ -291,6 +294,8 @@ set completeopt-=preview
 set completeopt+=longest
 set mps-=[:]
 
+
+set viminfo='10,\"100,:20,%,n~/.viminfo
 
 
 hi clear
