@@ -245,6 +245,7 @@ imap <F12> <ESC>:emenu Perl.Idioms.
 " С-q - выход из Vim
 map <C-Q> <Esc>:qa<cr>
 
+imap <C-S> <Esc>:w<CR>
 
 " Автозавершение слов по tab =)
 function InsertTabWrapper()
@@ -282,9 +283,7 @@ au BufRead,BufNewFile *.hrl set filetype=erlang
 au BufNewFile,BufRead *.php let b:optionsset=0
 au BufNewFile,BufRead *.php let b:PHP_autoformatcomment=0
 
-" Настройки для SessionMgr
-let g:SessionMgr_AutoManage = 0
-let g:SessionMgr_DefaultName = "mysession"
+let g:snippetsEmu_key = "<C-d>"
 
 " Настройки для Tlist (показвать только текущий файл в окне навигации по коду)
 let g:Tlist_Show_One_File = 1
