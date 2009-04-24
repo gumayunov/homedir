@@ -250,7 +250,7 @@ map <C-Q> <Esc>:qa<cr>
 function InsertTabWrapper()
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
-        return "    "
+        return "\<tab>"
     else
         return "\<c-p>"
     endif
@@ -279,6 +279,8 @@ au BufRead,BufNewFile *.pl set filetype=perl
 au BufRead,BufNewFile *.pm set filetype=perl
 au BufRead,BufNewFile *.rb set filetype=ruby
 au BufRead,BufNewFile *.hrl set filetype=erlang
+au BufNewFile,BufRead *.php let b:optionsset=0
+au BufNewFile,BufRead *.php let b:PHP_autoformatcomment=0
 
 " Настройки для SessionMgr
 let g:SessionMgr_AutoManage = 0
