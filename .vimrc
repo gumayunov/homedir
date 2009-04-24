@@ -241,9 +241,9 @@ imap <C-S> <Esc>:w<CR>
 function g:InsertTabWrapper()
 let col = col('.') - 1
 if !col || getline('.')[col - 1] !~ '\k'
-return "\<space>\<backspace>\<tab>"
+return "\<tab>"
 else
-return "\<c-p>"
+return "\<space>\<backspace>\<c-p>"
 endif
 endfunction
 "imap <tab> <space><backspace><c-r>=g:InsertTabWrapper()<cr>
