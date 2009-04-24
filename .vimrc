@@ -237,15 +237,15 @@ map <C-Q> <Esc>:qa<cr>
 imap <C-S> <Esc>:w<CR>
 
 " Автозавершение слов по tab =)
-function InsertTabWrapper()
+function g:InsertTabWrapper()
 let col = col('.') - 1
 if !col || getline('.')[col - 1] !~ '\k'
-return "\<tab>"
+return "\<space>\<backspace>\<tab>"
 else
 return "\<c-p>"
 endif
 endfunction
-imap <tab> <space><backspace><c-r>=InsertTabWrapper()<cr>
+"imap <tab> <space><backspace><c-r>=g:InsertTabWrapper()<cr>
 
 map <C-H> :Moccur<cr>
 
@@ -269,7 +269,7 @@ au BufRead,BufNewFile *.pm set filetype=perl
 au BufRead,BufNewFile *.rb set filetype=ruby
 au BufRead,BufNewFile *.hrl set filetype=erlang
 
-let g:snippetsEmu_key = "<C-d>"
+let g:snippetsEmu_key = "<tab>"
 
 " Настройки для Tlist (показвать только текущий файл в окне навигации по коду)
 let g:Tlist_Show_One_File = 1

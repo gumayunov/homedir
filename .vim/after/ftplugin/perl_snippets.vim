@@ -23,3 +23,4 @@ exec "Snippet fore foreach my \$".st."var".et." (@".st."array".et.") {<CR>".st.e
 exec "Snippet eval eval {<CR>".st.et."<CR>};<CR>if ($@) {<CR>".st.et."<CR>}<CR>".st.et
 exec "Snippet while while (".st.et.") {<CR>".st.et."<CR>}<CR>".st.et
 exec "Snippet xif ".st."expression".et." if ".st."condition".et.";".st.et
+exec "Snippet acc sub ".st."field".et."{ @_ > 1 ? \$_[0]->{".st."field".et."} = \$_[1] : \$_[0]->{".st."field".et."} }<CR>".st.et
