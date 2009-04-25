@@ -1,2 +1,2 @@
- alias rg=~/.tools/rg
- umask 2
+alias rg=~/.tools/rg
+umask 2

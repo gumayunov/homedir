@@ -22,7 +22,13 @@ cp -Rf .tools ~/
 rm -Rf ~/.zshkit
 cp -Rf zshkit ~/.zshkit
 ~/.zshkit/install
+
 cat zshrc_addons >> ~/.zshrc
+
+if [ -e ~/.zshrc.local ]; then
+    cat ~/.zshrc.local >> ~/.zshrc
+fi
+
 
 cp -f .gitconfig ~/
 cp -f .screenrc ~/
