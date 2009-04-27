@@ -11,6 +11,7 @@ mv $HOME/.default_zkbd $HOME/.default_zkbd.pre_zshkit
 cp $mydir/default_zkbd  $HOME/.default_zkbd
 cat "$mydir/lang" > $HOME/.zshenv
 cat "$mydir/umask" >> $HOME/.zshenv
+cat "$mydir/path" >> $HOME/.zshenv
 for f in $mydir/??_*; do
     echo "# $f" >>  $HOME/.zshenv
     cat $f >> $HOME/.zshenv
