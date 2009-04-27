@@ -23,5 +23,6 @@
     df = diff
     lg = log -p
     gr = log --graph --pretty=format:\"%Cred%h %Cgreen%an%Creset %s %Cred%d\"
+    where = branch --contains
 [core]
   excludesfile = /home/gva/.gitignore
