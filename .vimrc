@@ -267,6 +267,7 @@ set complete+=t
 filetype plugin on
 
 au FileType perl set iskeyword=@,48-57,_,192-255,:
+au BufReadPost cd %:h
 
 au BufRead,BufNewFile *.phps set filetype=php
 au BufRead,BufNewFile *.thtml set filetype=php
