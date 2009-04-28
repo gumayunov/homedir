@@ -160,8 +160,8 @@ else
         set lines=40
         set columns=115
     endif
-    if has("gui_mac")
-        set guifont=monaco:h13
+    if has("gui_mac") || has("gui_macvim")
+        set guifont=Monaco:h16
     endif
     if has("gui_win32") || has("gui_win32s")
         set guifont=Consolas:h12
