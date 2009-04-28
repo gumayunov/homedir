@@ -120,7 +120,7 @@ set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 
 "display tabs and trailing spaces
 set list
-set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+"set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
 set formatoptions-=o "dont continue comments when pushing o/O
 
@@ -149,7 +149,26 @@ set hidden
 "dont load csapprox if we no gui support - silences an annoying warning
 if !has("gui")
     let g:CSApprox_loaded = 1
+else
+    if has("gui_gnome")
+        set term=gnome-256color
+        colorscheme desert
+    else
+        set t_Co=256
+        colorscheme vibrantink
+        set guitablabel=%M%t
+        set lines=40
+        set columns=115
+    endif
+    if has("gui_mac")
+        set guifont=monaco:h13
+    endif
+    if has("gui_win32") || has("gui_win32s")
+        set guifont=Consolas:h12
+    endif
 endif
+
+nmap <silent> <Leader>p :NERDTreeToggle<CR>
 
 "make <c-l> clear the highlight as well as redraw
 nnoremap <C-L> :nohls<CR><C-L>
