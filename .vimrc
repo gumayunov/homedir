@@ -276,6 +276,14 @@ set complete+=t
 
 " Включаем filetype плугин. Настройки, специфичные для определынных файлов мы разнесём по разным местам
 filetype plugin on
+
+au FileType perl set iskeyword=@,48-57,_,192-255,:
+au BufReadPost cd %:h
+
+au FileType ruby set shiftwidth=2
+au FileType ruby set softtabstop=2
+au FileType ruby set tabstop=2
+
 au BufRead,BufNewFile *.phps set filetype=php
 au BufRead,BufNewFile *.thtml set filetype=php
 au BufRead,BufNewFile *.pl set filetype=perl
