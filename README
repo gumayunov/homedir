@@ -4,11 +4,11 @@ wget http://github.com/gumayunov/homedir/tarball/master -O homedir.tar.gz
 tar -xzf homedir.tar.gz
 find . -name 'gumayunov-homedir*' | xargs -J % mv % homedir
 cd homedir
-./install.sh
+./install
 
 or
 
 git clone git://github.com/gumayunov/homedir.git
 cd homedir
-./install.sh
+./install
 
