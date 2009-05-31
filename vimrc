@@ -120,7 +120,7 @@ set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 
 "display tabs and trailing spaces
 set list
-"set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+set listchars=tab:\ \ ,extends:>,precedes:<
 
 set formatoptions-=o "dont continue comments when pushing o/O
 
