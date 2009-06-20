@@ -4,8 +4,8 @@ let vimhome_path = '~/.vim/'
 try
   source ~/.vim/snippets/support_functions.vim
 catch
-  let vimhome_path = '~/vimfiles/'
-  source ~\vimfiles\snippets\support_functions.vim
+"  let vimhome_path = '~/vimfiles/'
+"  source ~\vimfiles\snippets\support_functions.vim
 endtry
 
 

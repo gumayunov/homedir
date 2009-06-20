@@ -21,7 +21,7 @@
 " store them if it is not built with +gui.
 if ! has("gui") || exists('g:CSApprox_loaded')
   " XXX This depends upon knowing the default for g:CSApprox_verbose_level
-  let s:verbose = 1
+  let s:verbose = 0
   if exists("g:CSApprox_verbose_level")
     let s:verbose  = g:CSApprox_verbose_level
   endif

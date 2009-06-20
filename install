@@ -24,14 +24,18 @@ if [ -e ~/.zshrc.local ]; then
     echo "source ~/.zshrc.local" >> ~/.zshrc
 fi
 
-
 cp -f .gitconfig ~/
 cp -f .screenrc ~/
 cp -f .gitignore ~/
 cp -f .cshrc ~/
 
-cp -Rf .vim ~/
-cp -f .vimrc ~/
+
+mv -f ~/.vim ~/.vim.backup
+mv -f ~/.vimrc ~/.vimrc.backup
+
+cp -Rf vimfiles ~/.vim
+cp -f .vimrc ~/.vimrc
+
 if [ "${is_remote}x" = "x" ]; then
     cat ./.vimrc.local >> ~/.vimrc
 else 
