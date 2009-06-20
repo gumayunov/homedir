@@ -35,6 +35,7 @@ mv -f ~/.vimrc ~/.vimrc.backup
 
 cp -Rf vimfiles ~/.vim
 cp -f .vimrc ~/.vimrc
+cp -f .vimrc.savonarola ~/.vim/vimrc.savonarola
 
 cp -Rf vim.snippets/* ~/.vim/snippets/
 
