@@ -156,9 +156,6 @@ map Б <
 map Ю >
 
 
-" CTRL-F для omni completion
-imap <C-F> <C-X><C-O>
-
 " C-c and C-v - Copy/Paste в "глобальный клипборд"
 vmap <C-C> "+y
 imap <C-V> <esc>"+gP
@@ -185,25 +182,9 @@ nmap <F5> <Esc>:BufExplorer<cr>
 vmap <F5> <esc>:BufExplorer<cr>
 imap <F5> <esc><esc>:BufExplorer<cr>
 
-" F6 - предыдущий буфер
-map <F6> :bp<cr>
-vmap <F6> <esc>:bp<cr>
-imap <F6> <esc>:bp<cr>
-
-" F7 - следующий буфер
-map <F7> :bn<cr>
-vmap <F7> <esc>:bn<cr>
-imap <F7> <esc>:bn<cr>
-
-
 map <F8> :TlistToggle<cr>
 vmap <F8> <esc>:TlistToggle<cr>
 imap <F8> <esc>:TlistToggle<cr>
-
-" F9 - "make" команда
-map <F9> :make<cr>
-vmap <F9> <esc>:make<cr>
-imap <F9> <esc>:make<cr>
 
 " F10 - удалить буфер
 map <F10> :bd<cr>
@@ -240,39 +221,15 @@ menu FileFormat.DOS :e ++ff=dos
 menu FileFormat.Mac :e ++ff=mac
 map <F4>        :emenu FileFormat.<TAB>
 
-map <F12> :emenu Perl.Idioms.
-imap <F12> <ESC>:emenu Perl.Idioms.
-
 " С-q - выход из Vim
 map <C-Q> <Esc>:qa<cr>
 
 imap <C-S> <Esc>:w<CR>
 
-" Автозавершение слов по tab =)
-function g:InsertTabWrapper()
-let col = col('.') - 1
-if !col || getline('.')[col - 1] !~ '\k'
-return "\<tab>"
-else
-return "\<space>\<backspace>\<c-p>"
-endif
-endfunction
-"imap <tab> <space><backspace><c-r>=g:InsertTabWrapper()<cr>
 
 :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 map <C-H> :Moccur<cr>
-
-" Слова откуда будем завершать
-set complete=""
-" Из текущего буфера
-set complete+=.
-" Из словаря
-set complete+=k
-" Из других открытых буферов
-set complete+=b
-" из тегов
-set complete+=t
 
 " Включаем filetype плугин. Настройки, специфичные для определынных файлов мы разнесём по разным местам
 filetype plugin on
