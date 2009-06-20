@@ -36,7 +36,7 @@ mv -f ~/.vimrc ~/.vimrc.backup
 cp -Rf vimfiles ~/.vim
 cp -f .vimrc ~/.vimrc
 
-cp -Rf vim.snippets ~/.vim/snippets
+cp -Rf vim.snippets/* ~/.vim/snippets/
 
 if [ "${is_remote}x" = "x" ]; then
     cat ./.vimrc.local >> ~/.vimrc
