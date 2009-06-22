@@ -29,9 +29,17 @@ cp -f .screenrc ~/
 cp -f .gitignore ~/
 cp -f .cshrc ~/
 
+if [ ! -e ~/.vim.backup ]; then
+  echo "backup .vim .."
+  mv -f ~/.vim ~/.vim.backup
+fi
+if [ ! -e ~/.vimrc.backup ]; then
+  echo "backup .vimrc .."
+  mv -f ~/.vimrc ~/.vimrc.backup
+fi
 
-mv -f ~/.vim ~/.vim.backup
-mv -f ~/.vimrc ~/.vimrc.backup
+rm -Rf ~/.vim
+rm -f ~/.vimrc
 
 cp -Rf vimfiles ~/.vim
 cp -f .vimrc ~/.vimrc
