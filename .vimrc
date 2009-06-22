@@ -5,7 +5,8 @@ source ~/.vim/vimrc.savonarola
 
 "colorscheme vibrantink
 colorscheme dark-ruby
-hi Normal ctermfg=White
+"hi Normal ctermfg=White
+hi Pmenu ctermbg=red ctermfg=0
 
 set nu
 "set sts=2
