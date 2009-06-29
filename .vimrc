@@ -13,4 +13,5 @@ set nu
 "set sw=2
 let g:fuzzy_ignore = "gems/*;vendor/rails/*" 
 
-
+set ignorecase
+set smartcase
