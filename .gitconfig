@@ -3,6 +3,8 @@
 [user]
     name = Victor Gumayunov
     email = gumayunov@gmail.com
+[push]
+    default = tracking
 #[pager]
 #    color = false
 [color]
