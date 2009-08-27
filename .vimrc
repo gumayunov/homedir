@@ -296,8 +296,9 @@ hi Pmenu ctermbg=blue ctermfg=yellow
 hi Error ctermfg=white	guifg=white
 
 function! s:FindEmAll(params)
-   cgetexpr system('grep -n -R ' . a:params . ' \| sed -e "s/:(\d+)/\|$1\|/"' )
-   copen
+    cgetexpr system('find "'.a:path.'" -type f -print0 \| xargs -0 egrep -n "'.a:needle.'" \| sed -e "s/:(\d+)/\|$1\|/"' )
+    copen
+    wincmd L
 endfunction
 
-command! -complete=file -nargs=+ Find call s:FindEmAll(<q-args>)
+command! -complete=file -nargs=+ Find call s:FindEmAll(<f-args>)
