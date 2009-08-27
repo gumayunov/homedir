@@ -294,3 +294,9 @@ colorscheme dark-ruby
 " some fixes for dark-ruby theme
 hi Pmenu ctermbg=blue ctermfg=yellow
 hi Error ctermfg=white	guifg=white
+
+function! s:FindEmAll(params)
+   cgetexpr system('grep -n -R ' . a:params . ' \| sed -e "s/:(\d+)/\|$1\|/"' )
+endfunction
+
+command! -complete=file -nargs=+ Grep call s:FindEmAll(<q-args>)
