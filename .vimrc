@@ -297,6 +297,7 @@ hi Error ctermfg=white	guifg=white
 
 function! s:FindEmAll(params)
    cgetexpr system('grep -n -R ' . a:params . ' \| sed -e "s/:(\d+)/\|$1\|/"' )
+   copen
 endfunction
 
-command! -complete=file -nargs=+ Grep call s:FindEmAll(<q-args>)
+command! -complete=file -nargs=+ Find call s:FindEmAll(<q-args>)
