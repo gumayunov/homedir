@@ -20,7 +20,7 @@
 [alias]
     st = status
     ci = commit
-    br = branch
+    br = branch -v
     co = checkout
     df = diff
     lg = log -p
