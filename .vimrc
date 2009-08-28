@@ -296,7 +296,7 @@ hi Pmenu ctermbg=blue ctermfg=yellow
 hi Error ctermfg=white	guifg=white
 
 function! s:FindEmAll(params)
-    cgetexpr system('find "'.a:path.'" -type f -print0 \| xargs -0 egrep -n "'.a:needle.'" \| sed -e "s/:(\d+)/\|$1\|/"' )
+    cgetexpr system('find '.a:path.' -type f -not \( -iname "*.swp" -or -iname "*.jpg" -or -iname "*.png" -or -iname "*.gif" -or -iname "*.log" \) -print0 \| xargs -0 egrep -n "'.a:needle.'" \| sed -e "s/:(\d+)/\|$1\|/"' )
     copen
     wincmd L
 endfunction
