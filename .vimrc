@@ -159,6 +159,9 @@ map Ь M
 map Б <
 map Ю >
 
+" Quick jumping between splits
+map <C-J> <C-W>j
+map <C-K> <C-W>k
 
 " C-c and C-v - Copy/Paste в "глобальный клипборд"
 vmap <C-C> "+y
