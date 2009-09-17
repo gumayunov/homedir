@@ -1,0 +1,38 @@
+#!/usr/bin/perl -w
+use strict;
+use HTTP::Request::Common;
+use LWP::UserAgent;
+use CGI qw(header -no_debug);
+
+my $leprastaffurl = 'http://leprastuff.ru/index.php/upl/img';
+my $tinyurl = 'http://tinyurl.com/api-create.php';
+my $req = POST $leprastaffurl,
+   Content_Type => 'form-data',
+   Content      => [
+       userfile => [ @ARGV ],
+   ];
+my $ua = LWP::UserAgent->new();
+my $res = $ua->request($req);
+my $img_url = undef;
+die $res->status_line unless $res->is_success;
+my $cont = $res->content();
+if( $cont =~ m!<a href='(http://leprastuff\.ru/data/img/.*?)'>больша</a>! ) {
+    $img_url = $1;
+} else {
+    die "can't find image url:\n$cont";
+}
+print $img_url, "\n";
+$res = $ua->post($tinyurl, [
+    url => $img_url,
+    source => "PerlAPI",
+]);
+
+die $res->status_line unless $res->is_success;
+$cont = $res->content;
+if( $cont =~ m!(\Qhttp://tinyurl.com/\E\w+)!x ) {
+    $img_url = $1;
+} else {
+    die "can't find image url:\n$cont";
+}
+print $img_url, "\n";
+
