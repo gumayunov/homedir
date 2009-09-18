@@ -27,4 +27,5 @@
     gr = log --graph --pretty=format:\"%Cred%h %Cgreen%an%Creset %s %Cred%d\"
     where = branch -av --contains
 [core]
-  excludesfile = /home/gva/.gitignore
+    excludesfile = /home/gva/.gitignore
+    pager = less -FRSX
