@@ -1,2 +1,3 @@
 umask 2
 export JAVA_HOME=/usr/lib/jvm/java-6-sun
+if [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi
