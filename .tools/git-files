@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# put it into directory in $PATH and use as follows:
+# >git files
+# >git files branch1..
+# >git files branch1..branch2
+
+WHAT=$1
+
+if [ "x$WHAT" = "x" ]; then
+    WHAT="origin/master.."
+fi
+
+git log --oneline --name-status $WHAT  | grep -v "^[0-9abcdef]" | sort -n |  uniq -u
