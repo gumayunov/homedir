@@ -164,17 +164,13 @@ map <C-J> <C-W>j
 map <C-K> <C-W>k
 
 " C-c and C-v - Copy/Paste в "глобальный клипборд"
-vmap <C-C> "+y
+vmap <C-C> "+gy
 imap <C-V> <esc>"+gP
 vmap <C-V> "+gP
-vmap <C-X> "+x
+vmap <C-X> "+gx
 
 " Заставляем shift-insert работать как в Xterm
 map <S-Insert> <MiddleMouse>
-
-" C-y - удаление текущей строки
-nmap <C-y> dd
-imap <C-y> <esc>ddi
 
 " Поиск и замена слова под курсором
 "nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
@@ -207,8 +203,7 @@ menu Encoding.koi8-r :e ++enc=koi8-r<CR>
 menu Encoding.windows-1251 :e ++enc=cp1251<CR>
 menu Encoding.cp866 :e ++enc=cp866<CR>
 menu Encoding.utf-8 :e ++enc=utf8 <CR>
-map <C-e>       :emenu Encoding.<TAB>
-imap <C-e>      <Esc>:emenu Encoding.<TAB>
+map <F3>       :emenu Encoding.<TAB>
 
 
 " Меню для выбора типа файла (DOS, UNIX, Mac)
