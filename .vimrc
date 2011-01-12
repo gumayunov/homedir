@@ -3,7 +3,7 @@ let g:CSApprox_loaded = 1
 source ~/.vim/vimrc
 
 
-let g:fuzzy_ignore = "gems/*;vendor/rails/*" 
+let g:fuzzy_ignore = "gems/*;vendor/rails/*"
 
 " Поиск будет учитывать регистр только если в строке поиска присутствую
 " заглавные буквы
@@ -263,21 +263,21 @@ endif
 "let colors_name = "textmate16"
 "
 "hi Normal ctermfg=Gray ctermbg=NONE
-"hi Cursor ctermfg=Black ctermbg=Yellow 
+"hi Cursor ctermfg=Black ctermbg=Yellow
 "hi Keyword ctermfg=Brown
-"hi Define ctermfg=Brown 
+"hi Define ctermfg=Brown
 "hi Comment ctermfg=Darkmagenta
-"hi Type ctermfg=White 
-"hi Identifier ctermfg=White 
-"hi Constant ctermfg=White 
-"hi Function ctermfg=White 
-"hi Include ctermfg=Brown 
+"hi Type ctermfg=White
+"hi Identifier ctermfg=White
+"hi Constant ctermfg=White
+"hi Function ctermfg=White
+"hi Include ctermfg=Brown
 "hi Statement ctermfg=Brown
-"hi String ctermfg=Darkgreen 
-"hi Search ctermbg=White 
+"hi String ctermfg=Darkgreen
+"hi Search ctermbg=White
 "
 "hi rubySharpBang ctermfg=Darkmagenta
-"hi rubySymbol ctermfg=Darkcyan 
+"hi rubySymbol ctermfg=Darkcyan
 "hi rubyStringDelimiter ctermfg=Darkgreen
 "hi rubyInterpolation ctermfg=White
 "hi rubyPseudoVariable ctermfg=White
