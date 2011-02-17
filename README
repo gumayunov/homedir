@@ -10,5 +10,5 @@ or
 
 git clone git://github.com/gumayunov/homedir.git
 cd homedir
-./install
+./install local
 
