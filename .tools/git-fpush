@@ -1,0 +1,7 @@
+#!/bin/sh
+
+REF=`git symbolic-ref HEAD | sed -e 's/refs\/heads\///'`
+REMOTE=`git config --get branch.$REF.remote`
+
+git fetch $REMOTE
+git push -f $REMOTE $REF 
