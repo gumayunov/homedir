@@ -227,13 +227,6 @@ set complete+=b
 " из тегов
 set complete+=t
 
-au FileType perl set iskeyword=@,48-57,_,192-255,:
-au BufReadPost cd %:h
-
-au FileType ruby set shiftwidth=2
-au FileType ruby set softtabstop=2
-au FileType ruby set tabstop=2
-
 au BufRead,BufNewFile *.phps set filetype=php
 au BufRead,BufNewFile *.thtml set filetype=php
 au BufRead,BufNewFile *.pl set filetype=perl
@@ -242,6 +235,13 @@ au BufRead,BufNewFile *.rb set filetype=ruby
 au BufRead,BufNewFile *.hrl set filetype=erlang
 au BufNewFile,BufRead *.php let b:optionsset=0
 au BufNewFile,BufRead *.php let b:PHP_autoformatcomment=0
+
+au FileType perl set iskeyword=@,48-57,_,192-255,:
+au BufReadPost cd %:h
+
+au FileType ruby,scss,cucumber set shiftwidth=2
+au FileType ruby,scss,cucumber set softtabstop=2
+au FileType ruby,scss,cucumber set tabstop=2
 
 let g:snippetsEmu_key = "<tab>"
 
