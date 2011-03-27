@@ -1,0 +1,22 @@
+#!/bin/sh
+SAVEIFS=$IFS
+IFS='\n'
+find ./ -name '*.flac' -size +100M |  while read image
+do  
+    echo "$image"
+    DIR=`dirname "$image"`
+    BASE=`basename "$image"`
+    BASE=`echo "$BASE" | sed -e 's/.flac//'`
+    CUE=$BASE.cue
+    IMAGE=$BASE.flac
+    cd "$DIR"
+        echo "Splitting with shnsplit"
+        shnsplit -o flac -f "$CUE" -t "%n – %t" "$IMAGE"
+        echo "Moving $IMAGE -> ${IMAGE}_"
+        mv "$IMAGE" "${IMAGE}_"
+        echo "Fixing tags with cuetag"
+        cuetag "$CUE" ./*.flac
+    cd ../
+done
+IFS=$SAVEIFS
+
