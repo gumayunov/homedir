@@ -1,4 +1,4 @@
 umask 2
 export JAVA_HOME=/usr/lib/jvm/java-6-sun
-[[ -s '/usr/local/lib/rvm' ]] && source '/usr/local/lib/rvm'
+[[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm"
 alias ssh-cp1251='luit -encoding CP1251 ssh'
