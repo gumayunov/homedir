@@ -13,7 +13,7 @@ startup_message off
 deflogin on
 autodetach on
 caption always
-caption string "%{rk} %c %{dd} %{b}%n  %{-b dd}%-w%{+bB.}%n* %t%{-}%+w%<"
+caption string "%{rk} %c %{dd} %{b}%n%{dd}  %-w%n* %t%+w%<"
 
 
 
