@@ -262,9 +262,9 @@ if exists("syntax_on")
 endif
 
 set t_Co=256
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 
-set background=light
+set background=dark
 
 "colorscheme vibrantink
 "colorscheme dark-ruby
@@ -389,3 +389,48 @@ call CmdAlias('ff', 'Find <cword> ./')
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+" Поддержка мыши
+set mouse=a
+set mousemodel=popup
+ 
+" Command aliases: 
+let loaded_cmdalias = 200
+
+" Make sure line-continuations won't cause any problem. This will be restored
+"   at the end
+let s:save_cpo = &cpo
+set cpo&vim
+
+" Define a new command alias.
+function! CmdAlias(lhs, rhs, ...)
+  if a:0 > 0
+    let flags = a:1.' '
+  else
+    let flags = ''
+  endif
+  exec 'cnoreabbr <expr> '.flags.a:lhs.
+	\ " <SID>ExpandAlias('".a:lhs."', '".a:rhs."')"
+endfunction
+
+function! s:ExpandAlias(lhs, rhs)
+  if getcmdtype() == ":"
+    " Determine if we are at the start of the command-line.
+    " getcmdpos() is 1-based.
+    let firstWord = strpart(getcmdline(), 0, getcmdpos())
+    if firstWord == a:lhs
+      return a:rhs
+    endif
+  endif
+  return a:lhs
+endfunction
+
+" Restore cpo.
+let &cpo = s:save_cpo
+unlet s:save_cpo
+
+
+call CmdAlias('hs', 'Moccur')
+call CmdAlias('pst', 'set paste')
+call CmdAlias('npst', 'set nopaste')
+call CmdAlias('sss', 'mks! v:this_session')
+call CmdAlias('ff', 'Find <cword> ./')
