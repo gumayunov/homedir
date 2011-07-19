@@ -1,4 +1,12 @@
 umask 2
 export JAVA_HOME=/usr/lib/jvm/java-6-sun
+
 [[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm"
 alias ssh-cp1251='luit -encoding CP1251 ssh'
+
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+    export TERM='xterm-256color'
+else
+    export TERM='xterm-color'
+fi
+
