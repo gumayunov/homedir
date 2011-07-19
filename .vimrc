@@ -233,6 +233,7 @@ au BufRead,BufNewFile *.pl set filetype=perl
 au BufRead,BufNewFile *.pm set filetype=perl
 au BufRead,BufNewFile *.rb set filetype=ruby
 au BufRead,BufNewFile *.hrl set filetype=erlang
+au BufRead,BufNewFile *.scss set filetype=sass
 au BufNewFile,BufRead *.php let b:optionsset=0
 au BufNewFile,BufRead *.php let b:PHP_autoformatcomment=0
 
