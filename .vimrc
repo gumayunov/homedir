@@ -277,8 +277,8 @@ hi rubyRailsMethod cterm=bold ctermfg=33
 hi rubyInstanceVariable cterm=bold CTermfg=33
 hi rubySymbol ctermfg=red
 
-" some fixes for dark-ruby theme
-hi Pmenu ctermbg=blue ctermfg=yellow
+" some fixes for theme
+hi Pmenu ctermfg=11 ctermbg=none
 hi Error ctermfg=white	guifg=white
 
 function! s:FindEmAll(needle, path)
