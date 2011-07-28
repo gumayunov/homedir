@@ -1,17 +1,5 @@
 #!/bin/sh
 
-remote_param="$1"
-if [ "${remote_param}x" = "x" ] || [  "${remote_param}x" = "remotex" ]; then
-    echo "Remote install"
-    is_remote="yes"
-elif [ "${remote_param}x" = "localx" ]; then
-    echo "Local install"
-    is_remote=""
-else
-    echo "Usage $0 local|remote"
-    exit 255
-fi
-
 cp -Rf .tools ~/
 
 rm -Rf ~/.zshkit
@@ -46,11 +34,8 @@ cp -f .vimrc ~/.vimrc
 
 cp -Rf vim.snippets/* ~/.vim/snippets/
 
-if [ "${is_remote}x" = "x" ]; then
-    cat ./.vimrc.local >> ~/.vimrc
-else 
-    cat ./.vimrc.remote >> ~/.vimrc
-fi
+cat ./.vimrc.local >> ~/.vimrc
+
 echo ' ' >> ~/.vimrc 
 echo '" Command aliases: ' >> ~/.vimrc 
 cat ./.vimrc.cmdalias >> ~/.vimrc
