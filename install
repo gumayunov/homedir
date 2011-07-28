@@ -8,10 +8,6 @@ cp -Rf zshkit ~/.zshkit
 
 cat zshrc_addons >> ~/.zshrc
 
-if [ -e ~/.zshrc.local ]; then
-    echo "source ~/.zshrc.local" >> ~/.zshrc
-fi
-
 cp -f .gitconfig ~/
 cp -f .screenrc ~/
 cp -f .gitignore ~/
