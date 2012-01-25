@@ -2,8 +2,7 @@ let g:CSApprox_loaded = 1
 
 source ~/.vim/vimrc
 
-
-let g:fuzzy_ignore = "gems/*;vendor/rails/*"
+set nowrap
 
 " Поиск будет учитывать регистр только если в строке поиска присутствую
 " заглавные буквы
@@ -159,16 +158,6 @@ map Ь M
 map Б <
 map Ю >
 
-" Quick jumping between splits
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-
-" C-c and C-v - Copy/Paste в "глобальный клипборд"
-vmap <C-C> "+gy
-imap <C-V> <esc>"+gP
-vmap <C-V> "+gP
-vmap <C-X> "+gx
-
 " Заставляем shift-insert работать как в Xterm
 map <S-Insert> <MiddleMouse>
 
@@ -205,7 +194,6 @@ menu Encoding.cp866 :e ++enc=cp866<CR>
 menu Encoding.utf-8 :e ++enc=utf8 <CR>
 map <F3>       :emenu Encoding.<TAB>
 
-
 " Меню для выбора типа файла (DOS, UNIX, Mac)
 menu FileFormat.UNIX :e ++ff=unix
 menu FileFormat.DOS :e ++ff=dos
@@ -213,8 +201,6 @@ menu FileFormat.Mac :e ++ff=mac
 map <F4>        :emenu FileFormat.<TAB>
 
 :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-map <C-H> :Moccur<cr>
 
 " Слова откуда будем завершать
 set complete=""
@@ -243,11 +229,6 @@ au BufReadPost cd %:h
 au FileType ruby,scss,cucumber set shiftwidth=2
 au FileType ruby,scss,cucumber set softtabstop=2
 au FileType ruby,scss,cucumber set tabstop=2
-
-let g:snippetsEmu_key = "<tab>"
-
-" Настройки для Tlist (показвать только текущий файл в окне навигации по коду)
-let g:Tlist_Show_One_File = 1
 
 set completeopt-=preview
 set completeopt+=longest
@@ -343,94 +324,8 @@ highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 " Поддержка мыши
 set mouse=a
 set mousemodel=popup
- 
-" Command aliases: 
-let loaded_cmdalias = 200
-
-" Make sure line-continuations won't cause any problem. This will be restored
-"   at the end
-let s:save_cpo = &cpo
-set cpo&vim
-
-" Define a new command alias.
-function! CmdAlias(lhs, rhs, ...)
-  if a:0 > 0
-    let flags = a:1.' '
-  else
-    let flags = ''
-  endif
-  exec 'cnoreabbr <expr> '.flags.a:lhs.
-	\ " <SID>ExpandAlias('".a:lhs."', '".a:rhs."')"
-endfunction
-
-function! s:ExpandAlias(lhs, rhs)
-  if getcmdtype() == ":"
-    " Determine if we are at the start of the command-line.
-    " getcmdpos() is 1-based.
-    let firstWord = strpart(getcmdline(), 0, getcmdpos())
-    if firstWord == a:lhs
-      return a:rhs
-    endif
-  endif
-  return a:lhs
-endfunction
-
-" Restore cpo.
-let &cpo = s:save_cpo
-unlet s:save_cpo
-
-
-call CmdAlias('hs', 'Moccur')
-call CmdAlias('pst', 'set paste')
-call CmdAlias('npst', 'set nopaste')
-call CmdAlias('sss', 'mks! v:this_session')
-call CmdAlias('ff', 'Find <cword> ./')
 
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-" Поддержка мыши
-set mouse=a
-set mousemodel=popup
- 
-" Command aliases: 
-let loaded_cmdalias = 200
 
-" Make sure line-continuations won't cause any problem. This will be restored
-"   at the end
-let s:save_cpo = &cpo
-set cpo&vim
-
-" Define a new command alias.
-function! CmdAlias(lhs, rhs, ...)
-  if a:0 > 0
-    let flags = a:1.' '
-  else
-    let flags = ''
-  endif
-  exec 'cnoreabbr <expr> '.flags.a:lhs.
-	\ " <SID>ExpandAlias('".a:lhs."', '".a:rhs."')"
-endfunction
-
-function! s:ExpandAlias(lhs, rhs)
-  if getcmdtype() == ":"
-    " Determine if we are at the start of the command-line.
-    " getcmdpos() is 1-based.
-    let firstWord = strpart(getcmdline(), 0, getcmdpos())
-    if firstWord == a:lhs
-      return a:rhs
-    endif
-  endif
-  return a:lhs
-endfunction
-
-" Restore cpo.
-let &cpo = s:save_cpo
-unlet s:save_cpo
-
-
-call CmdAlias('hs', 'Moccur')
-call CmdAlias('pst', 'set paste')
-call CmdAlias('npst', 'set nopaste')
-call CmdAlias('sss', 'mks! v:this_session')
-call CmdAlias('ff', 'Find <cword> ./')
