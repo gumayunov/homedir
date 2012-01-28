@@ -1,18 +1,33 @@
 #!/bin/sh
 
-cp -Rf .tools ~/
+echo "~/.tools"
+cp -Rf tools ~/.tools
+ls -al ~/.tools
+
+
+echo "~/.screenrc"
+cp -f screenrc ~/.screenrc
+
+echo "~/.gitconfig"
+cp -f gitconfig ~/.gitconfig
+
+echo "~/.gitignore"
+cp -f gitignore ~/.gitignore
+
+
+echo "Installing zshkit"
 
 rm -Rf ~/.zshkit
 cp -Rf zshkit ~/.zshkit
 ~/.zshkit/install
 
+echo "Adding homedir extra lines to ~/.zshrc"
 cat zshrc_addons >> ~/.zshrc
 
-cp -f .gitconfig ~/
-cp -f .screenrc ~/
-cp -f .gitignore ~/
-cp -f .cshrc ~/
+echo "Done"
+echo "To do local customization create ~/.zshrc.local and add strings into it\n"
 
+echo "Removing existing vim dotfiles"
 if [ ! -e ~/.vim.backup ]; then
   echo "backup .vim .."
   mv -f ~/.vim ~/.vim.backup
@@ -25,13 +40,5 @@ fi
 rm -Rf ~/.vim
 rm -f ~/.vimrc
 
-cp -Rf vimfiles ~/.vim
-cp -f .vimrc ~/.vimrc
-
-cp -Rf vim.snippets/* ~/.vim/snippets/
-
-cat ./.vimrc.local >> ~/.vimrc
-
-echo ' ' >> ~/.vimrc 
-echo '" Command aliases: ' >> ~/.vimrc 
-cat ./.vimrc.cmdalias >> ~/.vimrc
+echo ".vimrc"
+cp -f vimrc ~/.vimrc
