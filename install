@@ -27,7 +27,9 @@ cat zshrc_addons >> ~/.zshrc
 echo "Done"
 echo "To do local customization create ~/.zshrc.local and add strings into it\n"
 
+
 echo "Removing existing vim dotfiles"
+
 if [ ! -e ~/.vim.backup ]; then
   echo "backup .vim .."
   mv -f ~/.vim ~/.vim.backup
@@ -42,3 +44,21 @@ rm -f ~/.vimrc
 
 echo ".vimrc"
 cp -f vimrc ~/.vimrc
+
+echo "Cloning akita vimfiles"
+
+git clone git://github.com/akitaonrails/vimfiles.git ~/.vim
+
+cd ~/.vim
+
+echo "Updating submodules"
+
+git submodule init
+git submodule update
+git submodule foreach git co master
+git submodule foreach git pull
+
+echo "\nDone"
+
+echo "To patch vim syntastic plugin to support 1.9 syntax do:"
+echo "cp syntastic.patch ~/.vim/bubdle/syntastic/ && cd ~/.vim/bundle/syntastic/ && cat syntastic.patch | patch"
