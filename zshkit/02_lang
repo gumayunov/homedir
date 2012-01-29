@@ -1,10 +1,4 @@
-if [[ x$my_lang = x ]]; then
-    if [[  $uname = "Linux" ]]; then
-        my_lang="ru_RU.UTF-8"
-    else
-        my_lang="ru_RU.CP1251"
-    fi
-fi
+my_lang="en_US.UTF-8"
 
 export LANG="$my_lang"
 export LC_ALL="$my_lang"
