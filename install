@@ -1,17 +1,34 @@
 #!/bin/sh
 
-cp -Rf .tools ~/
+echo "~/.tools"
+cp -Rf tools ~/.tools
+ls -al ~/.tools
+
+
+echo "~/.screenrc"
+cp -f screenrc ~/.screenrc
+
+echo "~/.gitconfig"
+cp -f gitconfig ~/.gitconfig
+
+echo "~/.gitignore"
+cp -f gitignore ~/.gitignore
+
+
+echo "Installing zshkit"
 
 rm -Rf ~/.zshkit
 cp -Rf zshkit ~/.zshkit
 ~/.zshkit/install
 
+echo "Adding homedir extra lines to ~/.zshrc"
 cat zshrc_addons >> ~/.zshrc
 
-cp -f .gitconfig ~/
-cp -f .screenrc ~/
-cp -f .gitignore ~/
-cp -f .cshrc ~/
+echo "Done"
+echo "To do local customization create ~/.zshrc.local and add strings into it\n"
+
+
+echo "Removing existing vim dotfiles"
 
 if [ ! -e ~/.vim.backup ]; then
   echo "backup .vim .."
@@ -25,13 +42,23 @@ fi
 rm -Rf ~/.vim
 rm -f ~/.vimrc
 
-cp -Rf vimfiles ~/.vim
-cp -f .vimrc ~/.vimrc
+echo ".vimrc"
+cp -f vimrc ~/.vimrc
 
-cp -Rf vim.snippets/* ~/.vim/snippets/
+echo "Cloning akita vimfiles"
 
-cat ./.vimrc.local >> ~/.vimrc
+git clone git://github.com/akitaonrails/vimfiles.git ~/.vim
 
-echo ' ' >> ~/.vimrc 
-echo '" Command aliases: ' >> ~/.vimrc 
-cat ./.vimrc.cmdalias >> ~/.vimrc
+cd ~/.vim
+
+echo "Updating submodules"
+
+git submodule init
+git submodule update
+git submodule foreach git co master
+git submodule foreach git pull
+
+echo "\nDone"
+
+echo "To patch vim syntastic plugin to support 1.9 syntax do:"
+echo "cp syntastic.patch ~/.vim/bunle/syntastic/ && cd ~/.vim/bundle/syntastic/ && cat syntastic.patch | patch -p"

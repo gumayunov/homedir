@@ -1,1 +1,0 @@
-alias sc='./script/console'
