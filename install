@@ -61,4 +61,4 @@ git submodule foreach git pull
 echo "\nDone"
 
 echo "To patch vim syntastic plugin to support 1.9 syntax do:"
-echo "cp syntastic.patch ~/.vim/bubdle/syntastic/ && cd ~/.vim/bundle/syntastic/ && cat syntastic.patch | patch"
+echo "cp syntastic.patch ~/.vim/bunle/syntastic/ && cd ~/.vim/bundle/syntastic/ && cat syntastic.patch | patch -p"
