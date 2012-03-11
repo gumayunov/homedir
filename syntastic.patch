@@ -1,8 +1,8 @@
-diff --git syntax_checkers/ruby.vim syntax_checkers/ruby.vim
-index 8c3cd81..2cc28ea 100644
---- syntax_checkers/ruby.vim
-+++ syntax_checkers/ruby.vim
-@@ -24,7 +24,7 @@ function! SyntaxCheckers_ruby_GetLocList()
+diff --git syntax_checkers/ruby/mri.vim syntax_checkers/ruby/mri.vim
+index 50a8a11..1c9659c 100644
+--- syntax_checkers/ruby/mri.vim
++++ syntax_checkers/ruby/mri.vim
+@@ -14,7 +14,7 @@ function! SyntaxCheckers_ruby_GetLocList()
      if has('win32') || has('win64')
          let makeprg = 'ruby -W1 -T1 -c '.shellescape(expand('%'))
      else
