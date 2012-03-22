@@ -62,10 +62,16 @@ git submodule update
 git submodule foreach git co master
 git submodule foreach git pull
 
+
+echo "Patching vimfiles/vimrc"
+
+CUR=`pwd`
+cp patches/vimfiles-vimrc.patch ~/.vim/ && cd ~/.vim/ && cat vimfiles-vimrc.patch | patch -p && rm vimfiles-vimrc.patch && cd $CUR
+
 echo "\nDone"
 
 echo "To patch vim syntastic plugin to support 1.9 syntax do:"
-echo "cp syntastic.patch ~/.vim/bunle/syntastic/ && cd ~/.vim/bundle/syntastic/ && cat syntastic.patch | patch -p"
+echo "cp patches/syntastic.patch ~/.vim/bunle/syntastic/ && cd ~/.vim/bundle/syntastic/ && cat syntastic.patch | patch -p"
 echo "========================================================"
 echo "Warning! Remember that after the installation Git is configured to use the default name and email."
 echo "In order to change them you should edit the [user] section in the ~/.gitconfig file."

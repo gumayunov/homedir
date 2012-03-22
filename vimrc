@@ -2,6 +2,7 @@ let g:CSApprox_loaded = 1
 
 source ~/.vim/vimrc
 
+
 set nowrap
 
 " Поиск будет учитывать регистр только если в строке поиска присутствую
@@ -328,4 +329,24 @@ set mousemodel=popup
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+map <Leader>o :CtrlP<CR>
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.scssc,*.sassc
+
+
+" Fix vimfiles mappings
+
+nnoremap <C-L> :nohls<CR><C-L>
+inoremap <C-L> <C-O>:nohls<CR>
+
+" User vim as it supposed to deal with
+
+"inoremap  <Up>     <NOP>
+"inoremap  <Down>   <NOP>
+"inoremap  <Left>   <NOP>
+"inoremap  <Right>  <NOP>
+"noremap   <Up>     <NOP>
+"noremap   <Down>   <NOP>
+"noremap   <Left>   <NOP>
+"noremap   <Right>  <NOP>
 
