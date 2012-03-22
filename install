@@ -8,6 +8,10 @@ ls -al ~/.tools
 echo "~/.screenrc"
 cp -f screenrc ~/.screenrc
 
+if [ ! -e ~/.gitconfig.backup ]; then
+  echo "backup .gitconfig .."
+  mv -f ~/.gitconfig ~/.gitconfig.backup
+fi
 echo "~/.gitconfig"
 cp -f gitconfig ~/.gitconfig
 
@@ -62,3 +66,6 @@ echo "\nDone"
 
 echo "To patch vim syntastic plugin to support 1.9 syntax do:"
 echo "cp syntastic.patch ~/.vim/bunle/syntastic/ && cd ~/.vim/bundle/syntastic/ && cat syntastic.patch | patch -p"
+echo "========================================================"
+echo "Warning! Remember that after the installation Git is configured to use the default name and email."
+echo "In order to change them you should edit the [user] section in the ~/.gitconfig file."
