@@ -8,6 +8,10 @@ ls -al ~/.tools
 echo "~/.screenrc"
 cp -f screenrc ~/.screenrc
 
+if [ ! -e ~/.gitconfig.backup ]; then
+  echo "backup .gitconfig .."
+  mv -f ~/.gitconfig ~/.gitconfig.backup
+fi
 echo "~/.gitconfig"
 cp -f gitconfig ~/.gitconfig
 
