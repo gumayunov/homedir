@@ -12,8 +12,19 @@ if [ ! -e ~/.gitconfig.backup ]; then
   echo "backup .gitconfig .."
   mv -f ~/.gitconfig ~/.gitconfig.backup
 fi
+
 echo "~/.gitconfig"
 cp -f gitconfig ~/.gitconfig
+
+echo "Enter your name for git user.name:\c"
+read GIT_USER_NAME
+
+echo "Enter your email for git user.email:\c"
+read GIT_USER_EMAIL
+
+git config --global --replace-all user.name $GIT_USER_NAME
+git config --global --replace-all user.email $GIT_USER_EMAIL
+git config --global --replace-all core.excludesfile ~/.gitconfig
 
 echo "~/.gitignore"
 cp -f gitignore ~/.gitignore
@@ -72,6 +83,3 @@ echo "\nDone"
 
 echo "To patch vim syntastic plugin to support 1.9 syntax do:"
 echo "cp patches/syntastic.patch ~/.vim/bunle/syntastic/ && cd ~/.vim/bundle/syntastic/ && cat syntastic.patch | patch -p"
-echo "========================================================"
-echo "Warning! Remember that after the installation Git is configured to use the default name and email."
-echo "In order to change them you should edit the [user] section in the ~/.gitconfig file."
