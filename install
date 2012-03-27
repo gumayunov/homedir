@@ -1,5 +1,7 @@
 #!/bin/sh
 
+CUR=`pwd`
+
 echo "~/.tools"
 cp -Rf tools ~/.tools
 ls -al ~/.tools
@@ -40,8 +42,6 @@ echo "Adding homedir extra lines to ~/.zshrc"
 cat zshrc_addons >> ~/.zshrc
 
 echo "Done"
-echo "To do local customization create ~/.zshrc.local and add strings into it\n"
-
 
 echo "Removing existing vim dotfiles"
 
@@ -73,13 +73,15 @@ git submodule update
 git submodule foreach git co master
 git submodule foreach git pull
 
+cd $CUR
 
 echo "Patching vimfiles/vimrc"
 
-CUR=`pwd`
-cp patches/vimfiles-vimrc.patch ~/.vim/ && cd ~/.vim/ && cat vimfiles-vimrc.patch | patch -p && rm vimfiles-vimrc.patch && cd $CUR
+cp patches/vimfiles-vimrc.patch ~/.vim/ && cd ~/.vim/ && cat vimfiles-vimrc.patch | patch && rm vimfiles-vimrc.patch && cd $CUR
 
 echo "\nDone"
 
-echo "To patch vim syntastic plugin to support 1.9 syntax do:"
-echo "cp patches/syntastic.patch ~/.vim/bunle/syntastic/ && cd ~/.vim/bundle/syntastic/ && cat syntastic.patch | patch -p"
+echo "To do local customization for zsh place code into ~/.zshrc.local\n\n"
+
+echo "To patch vim syntastic plugin to support 1.9 syntax do:\n"
+echo "cp patches/syntastic.patch ~/.vim/bunle/syntastic/ && cd ~/.vim/bundle/syntastic/ && cat syntastic.patch | patch -p\n"
