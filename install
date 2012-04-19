@@ -84,4 +84,4 @@ echo "\nDone"
 echo "To do local customization for zsh place code into ~/.zshrc.local\n\n"
 
 echo "To patch vim syntastic plugin to support 1.9 syntax do:\n"
-echo "cp patches/syntastic.patch ~/.vim/bunle/syntastic/ && cd ~/.vim/bundle/syntastic/ && cat syntastic.patch | patch -p\n"
+echo "cp patches/syntastic.patch ~/.vim/bundle/syntastic/ && cd ~/.vim/bundle/syntastic/ && cat syntastic.patch | patch -p\n"
