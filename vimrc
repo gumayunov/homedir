@@ -339,7 +339,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.scssc,*.sassc
 nnoremap <C-L> :nohls<CR><C-L>
 inoremap <C-L> <C-O>:nohls<CR>
 
-" User vim as it supposed to deal with
+" Disable arrow keys for the great good
 
 "inoremap  <Up>     <NOP>
 "inoremap  <Down>   <NOP>
