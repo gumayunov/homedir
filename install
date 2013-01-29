@@ -43,45 +43,13 @@ cat zshrc_addons >> ~/.zshrc
 
 echo "Done"
 
-echo "Removing existing vim dotfiles"
+echo "Starging janus automated installer"
 
-if [ ! -e ~/.vim.backup ]; then
-  echo "backup .vim .."
-  mv -f ~/.vim ~/.vim.backup
-fi
-if [ ! -e ~/.vimrc.backup ]; then
-  echo "backup .vimrc .."
-  mv -f ~/.vimrc ~/.vimrc.backup
-fi
+curl -Lo- https://bit.ly/janus-bootstrap | bash
 
-rm -Rf ~/.vim
-rm -f ~/.vimrc
+echo "Installing non janus vim plugins"
+cp -r janus ~/.janus
 
-echo ".vimrc"
-cp -f vimrc ~/.vimrc
-
-echo "Cloning akita vimfiles"
-
-git clone git://github.com/akitaonrails/vimfiles.git ~/.vim
-
-cd ~/.vim
-
-echo "Updating submodules"
-
-git submodule init
-git submodule update
-git submodule foreach git co master
-git submodule foreach git pull
-
-cd $CUR
-
-echo "Patching vimfiles/vimrc"
-
-cp patches/vimfiles-vimrc.patch ~/.vim/ && cd ~/.vim/ && cat vimfiles-vimrc.patch | patch && rm vimfiles-vimrc.patch && cd $CUR
-
-echo "\nDone"
-
-echo "To do local customization for zsh place code into ~/.zshrc.local\n\n"
-
-echo "To patch vim syntastic plugin to support 1.9 syntax do:\n"
-echo "cp patches/syntastic.patch ~/.vim/bundle/syntastic/ && cd ~/.vim/bundle/syntastic/ && cat syntastic.patch | patch -p\n"
+echo "Customizing janus"
+cp vimrc.before ~/.vimrc.before
+cp vimrc.after ~/.vimrc.after

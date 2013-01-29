@@ -1,0 +1,181 @@
+
+set t_Co=256
+"let g:solarized_termcolors=256
+
+"set background=dark
+set background=light
+
+"colorscheme vibrantink
+"colorscheme dark-ruby
+colorscheme solarized
+"hi Normal ctermfg=White
+
+" Some fixes for solarized theme
+hi rubyDefine ctermbg=none
+hi rubyRailsMethod cterm=bold ctermfg=33
+hi rubyInstanceVariable cterm=bold CTermfg=33
+hi rubySymbol ctermfg=red
+
+" some fixes for theme
+hi Pmenu ctermfg=11 ctermbg=none
+hi Error ctermfg=white  guifg=white
+
+au BufRead,BufNewFile *.rabl set filetype=ruby
+au BufRead,BufNewFile *.hrl set filetype=erlang
+au BufRead,BufNewFile *.scss set filetype=sass
+au BufRead,BufNewFile *.cljs set filetype=clojure
+
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+            \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+map <Leader>o :CtrlP<CR>
+map <Leader>p :NERDTreeToggle<CR>
+
+"let g:buffergator_viewport_split_policy = 'T'
+"map <F5> :BuffergatorToggle<CR>
+map <F5> :BufExplorer<CR>
+
+nnoremap <C-L> :nohls<CR><C-L>
+inoremap <C-L> <C-O>:nohls<CR>
+
+vmap < <gv
+vmap > >gv
+
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
+
+set mouse=a
+set mousemodel=popup
+
+function! s:FindEmAll(needle, path)
+    cgetexpr system('find '.a:path.' -type f -not \( -iname "*.swp" -or -iname "*.jpg" -or -iname "*.png" -or -iname "*.gif" -or -iname "*.log" \) -print0 \| xargs -0 egrep -n "'.a:needle.'" \| sed -e "s/:(\d+)/\|$1\|/"' )
+    copen
+    wincmd L
+endfunction
+
+command! -complete=file -nargs=+ Find call s:FindEmAll(<f-args>)
+
+let g:gitgrepprg="git\\ grep\\ -n"
+
+function! GitGrep(args)
+    let grepprg_bak=&grepprg
+    exec "set grepprg=" . g:gitgrepprg
+    execute "silent! grep " . a:args
+    let &grepprg=grepprg_bak
+    copen
+    wincmd L
+    exec "redraw!"
+endfunction
+
+command! -nargs=* -complete=file GitGrep call GitGrep(<q-args>)
+
+set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ 0x\ \ %l,%c%V\ %P
+set laststatus=2
+
+map ё `
+map й q
+map ц w
+map у e
+map к r
+map е t
+map н y
+map г u
+map ш i
+map щ o
+map з p
+map х [
+map ъ ]
+map ф a
+map ы s
+map в d
+map а f
+map п g
+map р h
+map о j
+map л k
+map д l
+map ж ;
+map э '
+map я z
+map ч x
+map с c
+map м v
+map и b
+map т n
+map ь m
+map б ,
+map ю .
+map Ё ~
+map Й Q
+map Ц W
+map У E
+map К R
+map Е T
+map Н Y
+map Г U
+map Ш I
+map Щ O
+map З P
+map Х {
+map Ъ }
+map Ф A
+map Ы S
+map В D
+map А F
+map П G
+map Р H
+map О J
+map Л K
+map Д L
+map Ж :
+map Э "
+map Я Z
+map Ч X
+map С C
+map М V
+map И B
+map Т N
+map Ь M
+map Б <
+map Ю >
+
+
+"" ,z  -- Show only last search
+"" ,zz -- Show only "describe ..." and "it ..." lines in specs
+"" ,zd -- Show only "class ..." and "def ..." lines in Ruby files
+"" zR  -- Remove all folds
+""
+"" From http://vim.wikia.com/wiki/Folding_with_Regular_Expression
+"nnoremap ,z :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>
+
+"" Then variations on that, with different searches ...
+""
+"" Fold spec files, displaying "describe ..." and "it ..." lines
+"function! FoldSpec()
+  "let @/='\(describe.*do$\|it.*do$\|context.*do$\)'
+  "setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2
+"endfunction
+"map ,zz :call FoldSpec()<CR>
+
+"" Fold Ruby, showing class and method definitions
+"function! FoldDefs()
+  "let @/='\(module\ \|class\ \|has_many\ \|belongs_to\ \|_filter\ \|helper\ \|belongs_to\ \|def\ \|private\|protected\)'
+  "setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2
+"endfunction
+"map ,zd :call FoldDefs()<CR>
+
+"" Set the text that represents folded lines to a simple dash, showing no
+"" information.
+"" This way, when viewing folded specs and classes, there is minimal cruft on
+"" the screen to distract from the unfolded content.
+"set foldtext=MyFoldText()
+"function! MyFoldText()
+  "return "-"
+"endfunction
