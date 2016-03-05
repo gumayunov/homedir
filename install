@@ -26,7 +26,7 @@ read GIT_USER_EMAIL
 
 git config --global --replace-all user.name $GIT_USER_NAME
 git config --global --replace-all user.email $GIT_USER_EMAIL
-git config --global --replace-all core.excludesfile ~/.gitconfig
+git config --global --replace-all core.excludesfile ~/.gitignore
 
 echo "~/.gitignore"
 cp -f gitignore ~/.gitignore
